@@ -4,16 +4,16 @@
 // File:................ PropertyView.xaml.cs
 // Last Code Cleanup:... 12/27/2019 @ 8:01 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application.View
+namespace BaseRevitModeless.View
 {
 
 	using System.Windows;
 
-	using Application.ViewModel;
-
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
+
+	using BaseRevitModeless.ViewModel;
 
 	using Application = Autodesk.Revit.ApplicationServices.Application;
 
