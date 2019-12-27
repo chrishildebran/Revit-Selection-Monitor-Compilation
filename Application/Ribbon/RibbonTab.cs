@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Base Revit Modeless
-// Project:............. Application
+// Solution:............ Kelly Development
+// Project:............. BaseRevitModeless
 // File:................ RibbonTab.cs
-// Last Code Cleanup:... 12/27/2019 @ 8:58 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/27/2019 @ 12:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Ribbon
 {
@@ -32,7 +32,9 @@ namespace BaseRevitModeless.Ribbon
 
 			var ribbonPanel = uiControlledApplication.CreateRibbonPanel(_ribbonTabName, _ribbonPanelName);
 
-			ribbonPanel.AddItem(RibbonPushButtons.PropertyFormButton(ribbonPanel, _ribbonTabName, _path));
+			ribbonPanel.AddItem(RibbonPushButtons.SelectionChangedCommand(ribbonPanel, _ribbonTabName, _path));
+
+			ribbonPanel.AddItem(RibbonPushButtons.PropertyView(ribbonPanel, _ribbonTabName, _path));
 		}
 
 		#endregion
