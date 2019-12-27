@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Base Revit Modeless
-// Project:............. Application
+// Solution:............ Kelly Development
+// Project:............. BaseRevitModeless
 // File:................ SettingModel.cs
-// Last Code Cleanup:... 12/27/2019 @ 8:01 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/27/2019 @ 12:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Model
 {
