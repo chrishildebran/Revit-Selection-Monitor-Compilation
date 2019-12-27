@@ -1,0 +1,41 @@
+﻿<Window x:Name="PropertryWindow"
+        x:Class="Application.View.PropertyView"
+        DataContext='{Binding Mode=Default,  RelativeSource={RelativeSource Self}}'
+        Height="500"
+        MinHeight="500"
+        Title="JHKelly - Common Parameters"
+        d:DataContext='{d:DesignInstance {x:Type viewModel1:PropertyViewModel}}'
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Topmost="True"
+        Width="400"
+        WindowStartupLocation="CenterScreen"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:viewModel1="clr-namespace:Application.ViewModel">
+    <Grid>
+        <Button x:Name="Update"
+                Content="Update"
+                HorizontalAlignment="Left"
+                Margin="10,0,0,10"
+                VerticalAlignment="Bottom"
+                Command="{Binding DelegateCommandUpdateRevitCommand}"
+                Width="75" />
+        <Button x:Name="UpdateAndClose"
+                Content="Close"
+                Margin="0,0,10,10"
+                VerticalAlignment="Bottom"
+                Click="Close_Click"
+                HorizontalAlignment="Right"
+                Width="107" />
+        <telerik:RadPropertyGrid x:Name="TypeParameterPropertyGrid"
+                                 Item="{Binding PropertyModel}"
+                                 Margin="10,10,10,40"
+                                 RenderMode="Flat"
+                                 IsGrouped="True"
+                                 AutoExpandGroups="True"
+                                 AutoGeneratePropertyDefinitions="True" />
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	
+	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">/////////////////////////////////////////////////////////////&#xD;
+Solution:............ $SOLUTION$&#xD;
+Project:............. $PROJECT$&#xD;
+File:................ $FILENAME$&#xD;
+Last Code Cleanup:... $CURRENT_MONTH$/$CURRENT_DAY$/$CURRENT_YEAR$ @ $CURRENT_TIME$ Using ReSharper ✓&#xD;
+/////////////////////////////////////////////////////////////&#xD;
+</s:String>
+	
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="C:\TFS\KTR Dev1\lib\RCWPF\2019.1.325.45\Telerik.Windows.Controls.Input.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\TFS\KTR Dev1\lib\RCWPF\2019.1.325.45\Telerik.Windows.Controls.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\TFS\KTR Dev1\packages\CsvHelper.12.1.2\lib\net45\CsvHelper.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\DevGit\Josh-Lumley-5-Secrets-Video-Follow\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:Int64 x:Key="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue">13</s:Int64>
+	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">12/26/2019 12:20:48</s:String></wpf:ResourceDictionary>
