@@ -22,7 +22,7 @@ namespace Application.Ribbon
 
 		public static PushButtonData PropertyFormButton(RibbonPanel ribbonPanel, string tabName, string path)
 		{
-			return new PushButtonData(ribbonPanel + tabName + "3", "Properties", path, " Application.FormPropertyMvvm.View.PropertyView")
+			return new PushButtonData(ribbonPanel + tabName + "3", "Properties", path, " Application.View.PropertyView")
 			       {
 				       LargeImage = Image.Get(ImagePath + "AceOfSpades_32.png"),
 				       Image      = Image.Get(ImagePath + "AceOfSpades_16.png")
