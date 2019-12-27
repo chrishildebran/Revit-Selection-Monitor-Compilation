@@ -4,13 +4,13 @@
 // File:................ PropertyExternalEvent.cs
 // Last Code Cleanup:... 12/27/2019 @ 8:08 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application.ExternalEvents
+namespace BaseRevitModeless.ExternalEvents
 {
-
-	using Application.Model;
 
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
+
+	using BaseRevitModeless.Model;
 
 	public class PropertyExternalEvent : IExternalEventHandler
 	{

@@ -4,7 +4,7 @@
 // File:................ RibbonTab.cs
 // Last Code Cleanup:... 12/27/2019 @ 8:58 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application.Ribbon
+namespace BaseRevitModeless.Ribbon
 {
 
 	using System.Reflection;

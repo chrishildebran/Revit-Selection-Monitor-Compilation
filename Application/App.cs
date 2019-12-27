@@ -4,14 +4,14 @@
 // File:................ App.cs
 // Last Code Cleanup:... 12/27/2019 @ 8:01 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application
+namespace BaseRevitModeless
 {
-
-	using Application.Ribbon;
-	using Application.Utilities;
 
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.UI;
+
+	using BaseRevitModeless.Ribbon;
+	using BaseRevitModeless.Utilities;
 
 	[Transaction(TransactionMode.Manual)]
 	public class App : IExternalApplication
