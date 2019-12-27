@@ -13,4 +13,4 @@ Last Code Cleanup:... $CURRENT_MONTH$/$CURRENT_DAY$/$CURRENT_YEAR$ @ $CURRENT_TI
   &lt;Assembly Path="C:\DevGit\Josh-Lumley-5-Secrets-Video-Follow\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:Int64 x:Key="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue">13</s:Int64>
-	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">12/26/2019 12:20:48</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">12/27/2019 12:20:50</s:String></wpf:ResourceDictionary>
