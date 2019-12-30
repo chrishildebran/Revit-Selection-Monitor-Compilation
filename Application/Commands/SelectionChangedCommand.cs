@@ -2,7 +2,7 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:22 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
@@ -32,6 +32,8 @@ namespace BaseRevitModeless.Commands
 
 		#region Fields (SC)
 
+		private int _panelEventFires;
+
 		private Application _rvtApp;
 
 		private ExternalCommandData _rvtCommandData;
@@ -58,6 +60,8 @@ namespace BaseRevitModeless.Commands
 				_rvtUiDoc       = commandData.Application.ActiveUIDocument;
 			}
 
+			_panelEventFires = 0;
+
 
 			// Iterate through Ribbon Tabs
 			foreach(var tab in ComponentManager.Ribbon.Tabs)
@@ -80,7 +84,11 @@ namespace BaseRevitModeless.Commands
 				}
 			}
 
+			Debug.WriteLine("--------------------------------------------------------------------------");
+			Debug.IndentLevel = 1;
 			Debug.Print($"CmdSelectionChanged - _subscribed = {_subscribed}");
+			Debug.IndentLevel = 0;
+			Debug.WriteLine("--------------------------------------------------------------------------");
 
 			return Result.Succeeded;
 		}
@@ -90,11 +98,9 @@ namespace BaseRevitModeless.Commands
 		{
 			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
 
-			var tab = (RibbonTab) sender;
+			_panelEventFires++;
 
-			var ePropertyName = e.PropertyName;
-
-			var areStringsEquals = string.Equals(ePropertyName, "Title", StringComparison.CurrentCultureIgnoreCase);
+			var areStringsEquals = string.Equals(e.PropertyName, "Title", StringComparison.CurrentCultureIgnoreCase);
 
 			if(areStringsEquals)
 			{
@@ -121,7 +127,7 @@ namespace BaseRevitModeless.Commands
 
 				var message = $"Selection Changed - Element Id's: {elementIdsForMessage}";
 
-				Debug.IndentLevel = 2;
+				Debug.IndentLevel = 1;
 				Debug.Print(message);
 				Debug.IndentLevel = 0;
 
@@ -131,6 +137,8 @@ namespace BaseRevitModeless.Commands
 					Debug.Print($"Why is the \'PanelEvent\' still firing when \'_subscribed\' = {_subscribed}");
 					Debug.Print(App.Uiapp.ToString()); //
 				}
+
+				Debug.Print($"\'PanelEvent\' Event Fire Count: {_panelEventFires}");
 
 				Debug.WriteLine("--------------------------------------------------------------------------");
 			}
