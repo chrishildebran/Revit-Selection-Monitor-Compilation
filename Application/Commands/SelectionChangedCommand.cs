@@ -2,7 +2,7 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 12/30/2019 @ 1:57 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
@@ -133,7 +133,6 @@ namespace BaseRevitModeless.Commands
 				}
 
 				Debug.WriteLine("--------------------------------------------------------------------------");
-
 			}
 
 

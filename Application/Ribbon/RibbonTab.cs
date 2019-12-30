@@ -2,7 +2,7 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ RibbonTab.cs
-// Last Code Cleanup:... 12/30/2019 @ 6:42 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Ribbon
 {
@@ -38,6 +38,7 @@ namespace BaseRevitModeless.Ribbon
 
 			// Buttons
 			ribbonPanel.AddItem(RibbonPushButtons.SelectionChangedCommand(ribbonPanel, _ribbonTabName, _path));
+
 
 			//ribbonPanel.AddItem(RibbonPushButtons.PropertyView(ribbonPanel, _ribbonTabName, _path));
 		}
