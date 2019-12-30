@@ -2,7 +2,7 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 12/27/2019 @ 2:46 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 8:50 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
@@ -13,8 +13,8 @@ namespace BaseRevitModeless.Commands
 	using System.ComponentModel;
 	using System.Diagnostics;
 	using System.Linq;
+	using System.Reflection;
 
-	using Autodesk.Revit.ApplicationServices;
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
@@ -28,15 +28,7 @@ namespace BaseRevitModeless.Commands
 
 		#region Fields (SC)
 
-		private Application _rvtApp;
-
-		private ExternalCommandData _rvtCommandData;
-
-		private static Document _rvtDoc;
-
 		private UIApplication _rvtUiApp;
-
-		private UIDocument _rvtUiDoc;
 
 		private static bool _subscribed;
 
@@ -46,100 +38,103 @@ namespace BaseRevitModeless.Commands
 
 		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		{
-			{
-				_rvtCommandData = commandData;
-				_rvtApp         = commandData.Application.Application;
-				_rvtDoc         = commandData.Application.ActiveUIDocument.Document;
-				_rvtUiApp       = commandData.Application;
-				_rvtUiDoc       = commandData.Application.ActiveUIDocument;
-			}
-
+			// Iterate through Ribbon Tabs
 			foreach(var tab in ComponentManager.Ribbon.Tabs)
 			{
+				// Look for Tab named "Modify"
 				if(tab.Id == "Modify")
 				{
 					if(_subscribed)
 					{
 						tab.PropertyChanged -= PanelEvent;
 						_subscribed         =  false;
+
+						NewMethod(_subscribed);
 					}
 					else
 					{
-						//tab.PropertyChanged -= PanelEvent; // Added based on reading https://forums.xamarin.com/discussion/112676/eventhandler-not-being-removed-despite-being-unsubscribed
 						tab.PropertyChanged += PanelEvent;
 						_subscribed         =  true;
+
+						NewMethod(_subscribed);
 					}
 
 					break;
 				}
 			}
 
-			Debug.Print("CmdSelectionChanged: _subscribed = {0}", _subscribed);
+			Debug.Print($"CmdSelectionChanged: _subscribed = {_subscribed}");
 
 			return Result.Succeeded;
 		}
 
 
-		private static List<Element> GetElementInstancesFromProjectWhereTypeIdExistsOrdered(Document rvtDoc, List<ElementId> elementIds)
+		private static void NewMethod(bool subscribed)
 		{
-			var collector = new FilteredElementCollector(rvtDoc, elementIds).WhereElementIsNotElementType();
+			var bindingFlags = BindingFlags.Instance | BindingFlags.Public;
 
-			return collector.Where(e => e.GetTypeId() != ElementId.InvalidElementId).OrderBy(e => e.Name).ToList();
+			var typeEvent = typeof(UIApplication);
+
+			EventInfo[] eventsBindingFlags = typeEvent.GetEvents();
+
+			Debug.WriteLine("\nThe events on the UIApplication class with the specified BindingFlags are : ");
+
+			Debug.WriteLine("--------------------------------------------------------------------------");
+			Debug.WriteLine($"Subscribed: {subscribed}");
+
+			for(var index = 0; index < eventsBindingFlags.Length; index++)
+			{
+				Debug.WriteLine(eventsBindingFlags[index].ToString());
+			}
+
+			Debug.WriteLine("--------------------------------------------------------------------------");
 		}
 
 
 		private void PanelEvent(object sender, PropertyChangedEventArgs e)
 		{
-			Debug.WriteLine("--------------------------------------------------------------------------");
-
-			Debug.Print("Sender: " + sender);
-
 			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
 
-			if(e.PropertyName == "Title")
+			var propertyName = e.PropertyName;
+
+			if(propertyName == "Title")
 			{
-				List<ElementId> eOrdered = _rvtUiApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
+				Debug.WriteLine("--------------------------------------------------------------------------");
 
 
-				// Get instances
-				List<Element> iOrdered = null;
-
-				if(eOrdered.Count > 0)
-				{
-					iOrdered = GetElementInstancesFromProjectWhereTypeIdExistsOrdered(_rvtDoc, eOrdered);
-				}
-				else
-				{
-					return;
-				}
+				// Get UIApplication only once. Suggested by Jeremy here: http://disq.us/p/26ct2oj
+				List<ElementId> eOrdered = App.Uiapp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
 				var n = eOrdered.Count;
 
 				var eidCount = 1;
-				var iidCount = 1;
 
-				string s1;
-				string s2;
+				string s;
 
 				if(0 == n)
 				{
-					s1 = "<nil>";
-					s2 = "<nil>";
+					s = "<nil>";
 				}
 				else
 				{
-					s1 = string.Join(",  ", eOrdered.Select(id => id.IntegerValue + " [" + eidCount++ + "]"));
-					s2 = string.Join(",  ", iOrdered.Select(element => element.Id + " [" + iidCount++ + "]"));
+					s = string.Join(",  ", eOrdered.Select(id => id.IntegerValue + " [" + eidCount++ + "]"));
 				}
 
-				Debug.WriteLine("");
-				Debug.Print("CmdSelectionChanged:  Element Id\'s: " + s1);
-				Debug.Print("CmdSelectionChanged: Instance Id\'s: " + s2);
+				var message = $"CmdSelectionChanged:  Element Id's: {s}";
+
+				Debug.Indent();
+				Debug.Print(message);
+				Debug.IndentLevel = 0;
+				Debug.WriteLine("--------------------------------------------------------------------------");
 
 				if(!_subscribed)
 				{
-					Debug.Print("Why is the \'PanelEvent\' still being called when \'_subscribed\' = {0}", _subscribed);
+					Debug.Print($"Why is the \'PanelEvent\' still being called when \'_subscribed\' = {_subscribed}");
 				}
+			}
+			else
+			{
+				Debug.Print($"Event Property Name: {e.PropertyName}");
 			}
 		}
 
