@@ -80,8 +80,12 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Commands\CmdChangedCommand .cs" />
+    <None Include="Ideate\absIRevitModel.cs" />
+    <None Include="Ideate\Id8ElementChangeSet.cs" />
+    <None Include="Ideate\IRevitModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\SelectionChangedCommand.cs" />
+    <None Include="Ideate\SelectionObserver.cs" />
     <Compile Include="Utilities\References.cs" />
     <Compile Include="Ribbon\RibbonTab.cs" />
     <Compile Include="Ribbon\RibbonPushButtons.cs" />

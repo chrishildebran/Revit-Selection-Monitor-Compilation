@@ -39,7 +39,7 @@ namespace BaseRevitModeless.Ribbon
 			// Buttons
 			ribbonPanel.AddItem(RibbonPushButtons.SelectionChangedCommand(ribbonPanel, _ribbonTabName, _path));
 
-			ribbonPanel.AddItem(RibbonPushButtons.PropertyView(ribbonPanel, _ribbonTabName, _path));
+			//ribbonPanel.AddItem(RibbonPushButtons.PropertyView(ribbonPanel, _ribbonTabName, _path));
 		}
 
 		#endregion

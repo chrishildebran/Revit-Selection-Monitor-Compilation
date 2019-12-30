@@ -2,33 +2,45 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 12/30/2019 @ 8:50 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 1:57 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
 
-	// https://thebuildingcoder.typepad.com/blog/2015/03/element-selection-changed-event.html
-	// https://github.com/jeremytammik/the_building_coder_samples/blob/master/BuildingCoder/BuildingCoder/CmdSelectionChanged.cs
+	using System;
 	using System.Collections.Generic;
 	using System.ComponentModel;
 	using System.Diagnostics;
 	using System.Linq;
-	using System.Reflection;
 
+	using Autodesk.Revit.ApplicationServices;
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 	using Autodesk.Windows;
 
-	//using System.Windows.Controls.Ribbon;
+	// https://thebuildingcoder.typepad.com/blog/2015/03/element-selection-changed-event.html
+	// https://github.com/jeremytammik/the_building_coder_samples/blob/master/BuildingCoder/BuildingCoder/CmdSelectionChanged.cs
+
+	// What ive tried: 
+	// Does disposing of a selection help any? "App.Uiapp.ActiveUIDocument.Selection.Dispose();" No.
+	// Does unloading and reloading a panel on the tab jog things? "	tab.Panels.Remove(new  Autodesk.Windows.RibbonPanel());" No
 
 	[Transaction(TransactionMode.ReadOnly)]
-	internal class SelectionChangedCommand : IExternalCommand
+	public class SelectionChangedCommand : IExternalCommand
 	{
 
 		#region Fields (SC)
 
+		private Application _rvtApp;
+
+		private ExternalCommandData _rvtCommandData;
+
+		private Document _rvtDoc;
+
 		private UIApplication _rvtUiApp;
+
+		private UIDocument _rvtUiDoc;
 
 		private static bool _subscribed;
 
@@ -38,6 +50,15 @@ namespace BaseRevitModeless.Commands
 
 		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		{
+			{
+				_rvtCommandData = commandData;
+				_rvtApp         = commandData.Application.Application;
+				_rvtDoc         = commandData.Application.ActiveUIDocument.Document;
+				_rvtUiApp       = commandData.Application;
+				_rvtUiDoc       = commandData.Application.ActiveUIDocument;
+			}
+
+
 			// Iterate through Ribbon Tabs
 			foreach(var tab in ComponentManager.Ribbon.Tabs)
 			{
@@ -48,46 +69,20 @@ namespace BaseRevitModeless.Commands
 					{
 						tab.PropertyChanged -= PanelEvent;
 						_subscribed         =  false;
-
-						NewMethod(_subscribed);
 					}
 					else
 					{
 						tab.PropertyChanged += PanelEvent;
 						_subscribed         =  true;
-
-						NewMethod(_subscribed);
 					}
 
 					break;
 				}
 			}
 
-			Debug.Print($"CmdSelectionChanged: _subscribed = {_subscribed}");
+			Debug.Print($"CmdSelectionChanged - _subscribed = {_subscribed}");
 
 			return Result.Succeeded;
-		}
-
-
-		private static void NewMethod(bool subscribed)
-		{
-			var bindingFlags = BindingFlags.Instance | BindingFlags.Public;
-
-			var typeEvent = typeof(UIApplication);
-
-			EventInfo[] eventsBindingFlags = typeEvent.GetEvents();
-
-			Debug.WriteLine("\nThe events on the UIApplication class with the specified BindingFlags are : ");
-
-			Debug.WriteLine("--------------------------------------------------------------------------");
-			Debug.WriteLine($"Subscribed: {subscribed}");
-
-			for(var index = 0; index < eventsBindingFlags.Length; index++)
-			{
-				Debug.WriteLine(eventsBindingFlags[index].ToString());
-			}
-
-			Debug.WriteLine("--------------------------------------------------------------------------");
 		}
 
 
@@ -95,47 +90,57 @@ namespace BaseRevitModeless.Commands
 		{
 			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
 
-			var propertyName = e.PropertyName;
+			var tab = (RibbonTab) sender;
 
-			if(propertyName == "Title")
+			var ePropertyName = e.PropertyName;
+
+			var areStringsEquals = string.Equals(ePropertyName, "Title", StringComparison.CurrentCultureIgnoreCase);
+
+			if(areStringsEquals)
 			{
 				Debug.WriteLine("--------------------------------------------------------------------------");
 
 
 				// Get UIApplication only once. Suggested by Jeremy here: http://disq.us/p/26ct2oj
-				List<ElementId> eOrdered = App.Uiapp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
+				List<ElementId> elementIds = App.Uiapp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
-				var n = eOrdered.Count;
+				var elementIdsCount = elementIds.Count;
 
 				var eidCount = 1;
 
-				string s;
+				string elementIdsForMessage;
 
-				if(0 == n)
+				if(elementIdsCount == 0)
 				{
-					s = "<nil>";
+					elementIdsForMessage = "<nil>";
 				}
 				else
 				{
-					s = string.Join(",  ", eOrdered.Select(id => id.IntegerValue + " [" + eidCount++ + "]"));
+					elementIdsForMessage = string.Join(",  ", elementIds.Select(id => id.IntegerValue + " [" + eidCount++ + "]"));
 				}
 
-				var message = $"CmdSelectionChanged:  Element Id's: {s}";
+				var message = $"Selection Changed - Element Id's: {elementIdsForMessage}";
 
-				Debug.Indent();
+				Debug.IndentLevel = 2;
 				Debug.Print(message);
 				Debug.IndentLevel = 0;
-				Debug.WriteLine("--------------------------------------------------------------------------");
 
 				if(!_subscribed)
 				{
-					Debug.Print($"Why is the \'PanelEvent\' still being called when \'_subscribed\' = {_subscribed}");
+					Debug.Print("");
+					Debug.Print($"Why is the \'PanelEvent\' still firing when \'_subscribed\' = {_subscribed}");
+					Debug.Print(App.Uiapp.ToString()); //
 				}
+
+				Debug.WriteLine("--------------------------------------------------------------------------");
+
 			}
-			else
-			{
-				Debug.Print($"Event Property Name: {e.PropertyName}");
-			}
+
+
+			//else
+			//{
+			//	Debug.Print($"Event Property Name: {e.PropertyName}");
+			//}
 		}
 
 		#endregion

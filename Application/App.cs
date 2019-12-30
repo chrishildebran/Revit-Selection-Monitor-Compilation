@@ -35,10 +35,10 @@ namespace BaseRevitModeless
 
 			Uiapp = GetUiApplication(uiControlledApplication);
 
-			if(!References.LoadTelerikReferences(typeof(App).Assembly))
-			{
-				TaskDialog.Show("Reference Load Error", "One or more references the Kelly Tools For Revit Addin depends upon did not load during Revit startup.");
-			}
+			//if(!References.LoadTelerikReferences(typeof(App).Assembly))
+			//{
+			//	TaskDialog.Show("Reference Load Error", "One or more references the Kelly Tools For Revit Addin depends upon did not load during Revit startup.");
+			//}
 
 			return Result.Succeeded;
 		}
