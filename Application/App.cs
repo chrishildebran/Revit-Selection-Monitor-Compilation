@@ -2,7 +2,7 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ App.cs
-// Last Code Cleanup:... 12/27/2019 @ 12:12 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless
 {
@@ -13,13 +13,16 @@ namespace BaseRevitModeless
 	using Autodesk.Revit.UI;
 
 	using BaseRevitModeless.Ribbon;
-	using BaseRevitModeless.Utilities;
 
 	[Transaction(TransactionMode.Manual)]
 	public class App : IExternalApplication
 	{
 
+		#region Fields (SC)
+
 		public static UIApplication Uiapp;
+
+		#endregion
 
 		#region Methods (SC)
 
@@ -34,6 +37,7 @@ namespace BaseRevitModeless
 			RibbonTab.Create(uiControlledApplication);
 
 			Uiapp = GetUiApplication(uiControlledApplication);
+
 
 			//if(!References.LoadTelerikReferences(typeof(App).Assembly))
 			//{
