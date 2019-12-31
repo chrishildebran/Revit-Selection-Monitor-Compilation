@@ -2,7 +2,7 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 12/31/2019 @ 12:59 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 3:07 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
@@ -78,6 +78,7 @@ namespace BaseRevitModeless.Commands
 						_subscribed         =  true;
 					}
 
+
 					//Utility.TabPropertyDataExport(_rvtDoc, tab);
 					//Utility.TabEventDataExport(_rvtDoc, tab);
 					//Utility.TabMemberDataExport(_rvtDoc, tab);
@@ -99,8 +100,6 @@ namespace BaseRevitModeless.Commands
 		private void PanelEvent(object sender, PropertyChangedEventArgs e)
 		{
 			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
-
-			var tab = (RibbonTab) sender;
 
 
 			var areStringsEquals = string.Equals(e.PropertyName, "Title", StringComparison.CurrentCultureIgnoreCase);
@@ -135,8 +134,9 @@ namespace BaseRevitModeless.Commands
 				if(!_subscribed)
 				{
 					Debug.Print("");
+					Debug.IndentLevel = 1;
 					Debug.Print($"Why is the \'PanelEvent\' still firing when \'_subscribed\' = {_subscribed}");
-					Debug.Print(App.Uiapp.ToString()); //
+					Debug.IndentLevel = 0;
 				}
 
 				Debug.WriteLine("--------------------------------------------------------------------------");
