@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// /////////////////////////////////////////////////////////////
+// Solution:............ Test
+// Project:............. BaseRevitModeless
+// File:................ temp.cs
+// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
+// /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless
 {
-	  class temp
-	  {
-	  }
+
+	internal class temp
+	{
+
+	}
+
 }

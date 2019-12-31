@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Kelly Development
+// Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:07 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
@@ -100,7 +100,6 @@ namespace BaseRevitModeless.Commands
 		private void PanelEvent(object sender, PropertyChangedEventArgs e)
 		{
 			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
-
 
 			var areStringsEquals = string.Equals(e.PropertyName, "Title", StringComparison.CurrentCultureIgnoreCase);
 

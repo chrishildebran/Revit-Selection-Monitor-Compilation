@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Kelly Development
+// Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ Utility.cs
-// Last Code Cleanup:... 12/31/2019 @ 1:02 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
@@ -34,8 +34,8 @@ namespace BaseRevitModeless.Commands
 			{
 				foreach(var property in GetProperties(eventInfo))
 				{
-					var propertyName = property.Name;
-					var propertyType = property.PropertyType;
+					var propertyName     = property.Name;
+					var propertyType     = property.PropertyType;
 					var propertyCanWrite = property.CanWrite;
 
 					sbEvents.AppendLine($"{eventInfo.Name}, {propertyName}, {propertyType},{propertyCanWrite}");

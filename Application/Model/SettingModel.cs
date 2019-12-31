@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Kelly Development
+// Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ SettingModel.cs
-// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Model
 {
