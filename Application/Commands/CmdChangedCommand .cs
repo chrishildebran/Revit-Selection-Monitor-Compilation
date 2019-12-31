@@ -2,7 +2,7 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ CmdChangedCommand .cs
-// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 10:42 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
@@ -13,6 +13,7 @@ namespace BaseRevitModeless.Commands
 	using System.ComponentModel;
 	using System.Diagnostics;
 	using System.Linq;
+	using System.Reflection;
 
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.DB;
@@ -54,6 +55,9 @@ namespace BaseRevitModeless.Commands
 
 					break;
 				}
+
+
+			
 			}
 
 			Debug.Print("CmdSelectionChanged: _subscribed = {0}", _subscribed);
@@ -61,6 +65,8 @@ namespace BaseRevitModeless.Commands
 			return Result.Succeeded;
 		}
 
+
+	
 
 		private void PanelEvent(object sender, PropertyChangedEventArgs e)
 		{

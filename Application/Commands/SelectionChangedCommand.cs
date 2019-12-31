@@ -2,7 +2,7 @@
 // Solution:............ Kelly Development
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 12/30/2019 @ 2:22 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 12:59 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Commands
 {
@@ -22,9 +22,12 @@ namespace BaseRevitModeless.Commands
 	// https://thebuildingcoder.typepad.com/blog/2015/03/element-selection-changed-event.html
 	// https://github.com/jeremytammik/the_building_coder_samples/blob/master/BuildingCoder/BuildingCoder/CmdSelectionChanged.cs
 
-	// What ive tried: 
-	// Does disposing of a selection help any? "App.Uiapp.ActiveUIDocument.Selection.Dispose();" No.
-	// Does unloading and reloading a panel on the tab jog things? "	tab.Panels.Remove(new  Autodesk.Windows.RibbonPanel());" No
+	// What ive tried
+	// 1) Get UIApplication only once. Suggested by Jeremy here: http://disq.us/p/26ct2oj
+	// 2) Does disposing of a selection help any? "App.Uiapp.ActiveUIDocument.Selection.Dispose();" No.
+	// 3) Does unloading and reloading a panel on the tab jog things? "	tab.Panels.Remove(new  Autodesk.Windows.RibbonPanel());" No
+	// 4) Can i fiddle with the Tab Title?
+	// 5) What property change triggers the event. Property of what?
 
 	[Transaction(TransactionMode.ReadOnly)]
 	public class SelectionChangedCommand : IExternalCommand
@@ -32,13 +35,11 @@ namespace BaseRevitModeless.Commands
 
 		#region Fields (SC)
 
-		private int _panelEventFires;
+		private static ExternalCommandData _commandData;
 
 		private Application _rvtApp;
 
-		private ExternalCommandData _rvtCommandData;
-
-		private Document _rvtDoc;
+		private static Document _rvtDoc;
 
 		private UIApplication _rvtUiApp;
 
@@ -52,21 +53,18 @@ namespace BaseRevitModeless.Commands
 
 		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		{
+			if(_rvtUiApp is null) // #1
 			{
-				_rvtCommandData = commandData;
-				_rvtApp         = commandData.Application.Application;
-				_rvtDoc         = commandData.Application.ActiveUIDocument.Document;
-				_rvtUiApp       = commandData.Application;
-				_rvtUiDoc       = commandData.Application.ActiveUIDocument;
+				_rvtUiApp = App.Uiapp; // #1
 			}
 
-			_panelEventFires = 0;
+			_commandData = commandData;
+			_rvtApp      = commandData.Application.Application;
+			_rvtDoc      = commandData.Application.ActiveUIDocument.Document;
+			_rvtUiDoc    = commandData.Application.ActiveUIDocument;
 
-
-			// Iterate through Ribbon Tabs
 			foreach(var tab in ComponentManager.Ribbon.Tabs)
 			{
-				// Look for Tab named "Modify"
 				if(tab.Id == "Modify")
 				{
 					if(_subscribed)
@@ -79,6 +77,10 @@ namespace BaseRevitModeless.Commands
 						tab.PropertyChanged += PanelEvent;
 						_subscribed         =  true;
 					}
+
+					//Utility.TabPropertyDataExport(_rvtDoc, tab);
+					//Utility.TabEventDataExport(_rvtDoc, tab);
+					//Utility.TabMemberDataExport(_rvtDoc, tab);
 
 					break;
 				}
@@ -98,7 +100,8 @@ namespace BaseRevitModeless.Commands
 		{
 			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
 
-			_panelEventFires++;
+			var tab = (RibbonTab) sender;
+
 
 			var areStringsEquals = string.Equals(e.PropertyName, "Title", StringComparison.CurrentCultureIgnoreCase);
 
@@ -106,9 +109,7 @@ namespace BaseRevitModeless.Commands
 			{
 				Debug.WriteLine("--------------------------------------------------------------------------");
 
-
-				// Get UIApplication only once. Suggested by Jeremy here: http://disq.us/p/26ct2oj
-				List<ElementId> elementIds = App.Uiapp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
+				List<ElementId> elementIds = _rvtUiApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList(); // #1
 
 				var elementIdsCount = elementIds.Count;
 
@@ -137,8 +138,6 @@ namespace BaseRevitModeless.Commands
 					Debug.Print($"Why is the \'PanelEvent\' still firing when \'_subscribed\' = {_subscribed}");
 					Debug.Print(App.Uiapp.ToString()); //
 				}
-
-				Debug.Print($"\'PanelEvent\' Event Fire Count: {_panelEventFires}");
 
 				Debug.WriteLine("--------------------------------------------------------------------------");
 			}
