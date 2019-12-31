@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Base Revit Modeless
-// Project:............. Application
+// Solution:............ Kelly Development
+// Project:............. BaseRevitModeless
 // File:................ AssemblyInfo.cs
-// Last Code Cleanup:... 12/27/2019 @ 8:01 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -31,4 +31,4 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly : AssemblyVersion("2019.12.27")]
+[assembly : AssemblyVersion("2019.12.30")]

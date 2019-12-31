@@ -2,9 +2,9 @@
 <RevitAddIns>
   <AddIn Type="Application">
     <Name>Base Revit Modeless</Name>
-    <Assembly>C:\Users\CHildebran\OneDrive\Desktop\Visual Studio Builds\Base Revit Modeless\Application.dll</Assembly>
+    <Assembly>C:\ProgramData\Autodesk\Revit\Addins\2020\Base Revit Modeless\BaseRevitModeless.dll</Assembly>
     <AddInId>16824613-93A7-4981-B2CF-27AB6E52280C</AddInId>
-    <FullClassName>Application.App</FullClassName>
+    <FullClassName>BaseRevitModeless.App</FullClassName>
     <VendorId>TBD</VendorId>
     <VendorDescription>TBD</VendorDescription>
   </AddIn>

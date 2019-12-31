@@ -1,10 +1,10 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Base Revit Modeless
-// Project:............. Application
+// Solution:............ Kelly Development
+// Project:............. BaseRevitModeless
 // File:................ PropertyViewModel.cs
-// Last Code Cleanup:... 12/27/2019 @ 8:05 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application.ViewModel
+namespace BaseRevitModeless.ViewModel
 {
 
 	using System;
@@ -14,11 +14,11 @@ namespace Application.ViewModel
 	using System.Windows;
 	using System.Windows.Input;
 
-	using Application.ExternalEvents;
-	using Application.Model;
-
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
+
+	using BaseRevitModeless.ExternalEvents;
+	using BaseRevitModeless.Model;
 
 	using Telerik.Windows.Controls;
 	using Telerik.Windows.Controls.Data.PropertyGrid;

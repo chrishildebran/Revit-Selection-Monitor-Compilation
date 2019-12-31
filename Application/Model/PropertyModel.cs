@@ -1,10 +1,10 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Base Revit Modeless
-// Project:............. Application
+// Solution:............ Kelly Development
+// Project:............. BaseRevitModeless
 // File:................ PropertyModel.cs
-// Last Code Cleanup:... 12/27/2019 @ 8:01 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application.Model
+namespace BaseRevitModeless.Model
 {
 
 	public class PropertyModel

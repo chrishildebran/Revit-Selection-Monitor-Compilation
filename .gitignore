@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/Application/bin
+/Application/obj
+/Application/Ideate

@@ -1,16 +1,16 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Base Revit Modeless
-// Project:............. Application
+// Solution:............ Kelly Development
+// Project:............. BaseRevitModeless
 // File:................ PropertyExternalEvent.cs
-// Last Code Cleanup:... 12/27/2019 @ 8:08 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application.ExternalEvents
+namespace BaseRevitModeless.ExternalEvents
 {
-
-	using Application.Model;
 
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
+
+	using BaseRevitModeless.Model;
 
 	public class PropertyExternalEvent : IExternalEventHandler
 	{

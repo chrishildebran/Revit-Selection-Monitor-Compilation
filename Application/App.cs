@@ -1,21 +1,28 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Base Revit Modeless
-// Project:............. Application
+// Solution:............ Kelly Development
+// Project:............. BaseRevitModeless
 // File:................ App.cs
-// Last Code Cleanup:... 12/27/2019 @ 8:01 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application
+namespace BaseRevitModeless
 {
 
-	using Application.Ribbon;
-	using Application.Utilities;
+	using System.Reflection;
 
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.UI;
 
+	using BaseRevitModeless.Ribbon;
+
 	[Transaction(TransactionMode.Manual)]
 	public class App : IExternalApplication
 	{
+
+		#region Fields (SC)
+
+		public static UIApplication Uiapp;
+
+		#endregion
 
 		#region Methods (SC)
 
@@ -29,12 +36,53 @@ namespace Application
 		{
 			RibbonTab.Create(uiControlledApplication);
 
-			if(!References.LoadTelerikReferences(typeof(App).Assembly))
-			{
-				TaskDialog.Show("Reference Load Error", "One or more references the Kelly Tools For Revit Addin depends upon did not load during Revit startup.");
-			}
+			Uiapp = GetUiApplication(uiControlledApplication);
+
+
+			//if(!References.LoadTelerikReferences(typeof(App).Assembly))
+			//{
+			//	TaskDialog.Show("Reference Load Error", "One or more references the Kelly Tools For Revit Addin depends upon did not load during Revit startup.");
+			//}
 
 			return Result.Succeeded;
+		}
+
+
+		private static UIApplication GetUiApplication(UIControlledApplication uiControlledApplication)
+		{
+			var versionNumber = uiControlledApplication.ControlledApplication.VersionNumber;
+			var fieldName     = string.Empty;
+
+			switch(versionNumber)
+			{
+				case"2017" :
+
+					fieldName = "m_uiapplication";
+
+					break;
+
+				case"2018" :
+
+					fieldName = "m_uiapplication";
+
+					break;
+
+				case"2019" :
+
+					fieldName = "m_uiapplication";
+
+					break;
+
+				case"2020" :
+
+					fieldName = "m_uiapplication";
+
+					break;
+			}
+
+			var fieldInfo = uiControlledApplication.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+
+			return(UIApplication) fieldInfo?.GetValue(uiControlledApplication);
 		}
 
 		#endregion

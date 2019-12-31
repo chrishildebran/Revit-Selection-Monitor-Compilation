@@ -1,19 +1,19 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Base Revit Modeless
-// Project:............. Application
+// Solution:............ Kelly Development
+// Project:............. BaseRevitModeless
 // File:................ PropertyView.xaml.cs
-// Last Code Cleanup:... 12/27/2019 @ 8:01 AM Using ReSharper ✓
+// Last Code Cleanup:... 12/30/2019 @ 2:12 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace Application.View
+namespace BaseRevitModeless.View
 {
 
 	using System.Windows;
 
-	using Application.ViewModel;
-
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
+
+	using BaseRevitModeless.ViewModel;
 
 	using Application = Autodesk.Revit.ApplicationServices.Application;
 
@@ -56,12 +56,13 @@ namespace Application.View
 				_rvtUiDoc       = commandData.Application.ActiveUIDocument;
 			}
 
-			if(_rvtUiDoc.Selection.GetElementIds().Count != 1)
-			{
-				TaskDialog.Show("Me", "Please select one entity");
 
-				return Result.Cancelled;
-			}
+			//if(_rvtUiDoc.Selection.GetElementIds().Count != 1)
+			//{
+			//	TaskDialog.Show("Me", "Please select one entity");
+
+			//	return Result.Cancelled;
+			//}
 
 			DataContext = new PropertyViewModel(_rvtCommandData);
 
