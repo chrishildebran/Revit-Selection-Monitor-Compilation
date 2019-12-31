@@ -2,7 +2,7 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ RibbonPushButtons.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 3:36 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Ribbon
 {
@@ -23,6 +23,20 @@ namespace BaseRevitModeless.Ribbon
 		#endregion
 
 		#region Methods (SC)
+
+		public static PushButtonData PropertySelectionChangedView(RibbonPanel ribbonPanel, string tabName, string path)
+		{
+			var methodName  = GetMethodName(1);
+			var buttonName  = ribbonPanel.Name + tabName + methodName;
+			var buttonTitle = ChangeToTitleCaseString(methodName, true);
+
+			return new PushButtonData(buttonName, buttonTitle, path, "BaseRevitModeless.View.PropertySelectionChangedView")
+			       {
+				       LargeImage = Image.Get(ImagePath + "AceOfSpades_32.png"),
+				       Image      = Image.Get(ImagePath + "AceOfSpades_16.png")
+			       };
+		}
+
 
 		public static PushButtonData PropertyView(RibbonPanel ribbonPanel, string tabName, string path)
 		{

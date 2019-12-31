@@ -4,7 +4,7 @@
 // File:................ Utility.cs
 // Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace BaseRevitModeless.Commands
+namespace BaseRevitModeless.Utilities
 {
 
 	using System;
@@ -19,7 +19,7 @@ namespace BaseRevitModeless.Commands
 	using Autodesk.Revit.DB;
 	using Autodesk.Windows;
 
-	public class Utility
+	public class Exporters
 	{
 
 		#region Methods (SC)

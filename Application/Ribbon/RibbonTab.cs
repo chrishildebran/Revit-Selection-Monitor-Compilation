@@ -2,7 +2,7 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ RibbonTab.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 3:17 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.Ribbon
 {
@@ -11,36 +11,57 @@ namespace BaseRevitModeless.Ribbon
 
 	using Autodesk.Revit.UI;
 
-	public static class RibbonTab
+	public class RibbonTab
 	{
 
 		#region Fields (SC)
 
 		private static string _path = Assembly.GetExecutingAssembly().Location;
 
-		private static string _ribbonPanelName = "Modeless";
+		#endregion
 
-		private static string _ribbonTabName = "Kelly Dev";
+		#region Constructors (SC)
+
+		public RibbonTab()
+		{
+			RibbonTabName   = "Kelly Dev";
+			RibbonPanelName = "Modeless";
+		}
+
+		#endregion
+
+		#region Properties (SC)
+
+		private static string RibbonPanelName
+		{
+			get;
+			set;
+		}
+
+		private static string RibbonTabName
+		{
+			get;
+			set;
+		}
 
 		#endregion
 
 		#region Methods (SC)
 
-		public static void Create(UIControlledApplication uiControlledApplication)
+		public void Create(UIControlledApplication uiControlledApplication)
 		{
 			// Tab
-			uiControlledApplication.CreateRibbonTab(_ribbonTabName);
+			uiControlledApplication.CreateRibbonTab(RibbonTabName);
 
 
 			// Panel
-			var ribbonPanel = uiControlledApplication.CreateRibbonPanel(_ribbonTabName, _ribbonPanelName);
+			var ribbonPanel = uiControlledApplication.CreateRibbonPanel(RibbonTabName, RibbonPanelName);
 
 
 			// Buttons
-			ribbonPanel.AddItem(RibbonPushButtons.SelectionChangedCommand(ribbonPanel, _ribbonTabName, _path));
-
-
-			//ribbonPanel.AddItem(RibbonPushButtons.PropertyView(ribbonPanel, _ribbonTabName, _path));
+			ribbonPanel.AddItem(RibbonPushButtons.SelectionChangedCommand(ribbonPanel, RibbonTabName, _path));
+			ribbonPanel.AddItem(RibbonPushButtons.PropertyView(ribbonPanel, RibbonTabName, _path));
+			ribbonPanel.AddItem(RibbonPushButtons.PropertySelectionChangedView(ribbonPanel, RibbonTabName, _path));
 		}
 
 		#endregion

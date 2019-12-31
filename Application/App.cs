@@ -2,7 +2,7 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ App.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
+// Last Code Cleanup:... 12/31/2019 @ 3:26 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless
 {
@@ -13,6 +13,7 @@ namespace BaseRevitModeless
 	using Autodesk.Revit.UI;
 
 	using BaseRevitModeless.Ribbon;
+	using BaseRevitModeless.Utilities;
 
 	[Transaction(TransactionMode.Manual)]
 	public class App : IExternalApplication
@@ -34,15 +35,15 @@ namespace BaseRevitModeless
 
 		public Result OnStartup(UIControlledApplication uiControlledApplication)
 		{
-			RibbonTab.Create(uiControlledApplication);
+			var ribbon = new RibbonTab();
+			ribbon.Create(uiControlledApplication);
 
 			Uiapp = GetUiApplication(uiControlledApplication);
 
-
-			//if(!References.LoadTelerikReferences(typeof(App).Assembly))
-			//{
-			//	TaskDialog.Show("Reference Load Error", "One or more references the Kelly Tools For Revit Addin depends upon did not load during Revit startup.");
-			//}
+			if(!References.LoadTelerikReferences(typeof(App).Assembly))
+			{
+				TaskDialog.Show("Reference Load Error", "One or more references the Kelly Tools For Revit Addin depends upon did not load during Revit startup.");
+			}
 
 			return Result.Succeeded;
 		}
