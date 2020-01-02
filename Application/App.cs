@@ -2,7 +2,7 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ App.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:26 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/02/2020 @ 11:09 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless
 {
@@ -16,29 +16,32 @@ namespace BaseRevitModeless
 	using BaseRevitModeless.Utilities;
 
 	[Transaction(TransactionMode.Manual)]
-	public class App : IExternalApplication
+	internal class App : IExternalApplication
 	{
 
 		#region Fields (SC)
 
-		public static UIApplication Uiapp;
+		public static UIApplication UIApp;
+
+		public static UIControlledApplication UIContApp;
 
 		#endregion
 
 		#region Methods (SC)
 
-		public Result OnShutdown(UIControlledApplication a)
+		public Result OnShutdown(UIControlledApplication uiContApp)
 		{
 			return Result.Succeeded;
 		}
 
 
-		public Result OnStartup(UIControlledApplication uiControlledApplication)
+		public Result OnStartup(UIControlledApplication uiContApp)
 		{
-			var ribbon = new RibbonTab();
-			ribbon.Create(uiControlledApplication);
+			UIContApp = uiContApp;
+			UIApp     = GetUiApplication();
 
-			Uiapp = GetUiApplication(uiControlledApplication);
+			var ribbon = new RibbonTab();
+			ribbon.Create(uiContApp);
 
 			if(!References.LoadTelerikReferences(typeof(App).Assembly))
 			{
@@ -49,10 +52,13 @@ namespace BaseRevitModeless
 		}
 
 
-		private static UIApplication GetUiApplication(UIControlledApplication uiControlledApplication)
+		private static UIApplication GetUiApplication()
 		{
-			var versionNumber = uiControlledApplication.ControlledApplication.VersionNumber;
-			var fieldName     = string.Empty;
+			var uiContApp = UIContApp;
+
+			var versionNumber = uiContApp.ControlledApplication.VersionNumber;
+
+			var fieldName = string.Empty;
 
 			switch(versionNumber)
 			{
@@ -81,9 +87,11 @@ namespace BaseRevitModeless
 					break;
 			}
 
-			var fieldInfo = uiControlledApplication.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+			var fieldInfo = uiContApp.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
 
-			return(UIApplication) fieldInfo?.GetValue(uiControlledApplication);
+			var uiApplication = (UIApplication) fieldInfo?.GetValue(uiContApp);
+
+			return uiApplication;
 		}
 
 		#endregion

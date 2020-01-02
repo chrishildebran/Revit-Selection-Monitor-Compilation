@@ -2,8 +2,9 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/02/2020 @ 12:46 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
+// Development Notes
 namespace BaseRevitModeless.Commands
 {
 
@@ -13,21 +14,13 @@ namespace BaseRevitModeless.Commands
 	using System.Diagnostics;
 	using System.Linq;
 
-	using Autodesk.Revit.ApplicationServices;
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 	using Autodesk.Windows;
 
-	// https://thebuildingcoder.typepad.com/blog/2015/03/element-selection-changed-event.html
-	// https://github.com/jeremytammik/the_building_coder_samples/blob/master/BuildingCoder/BuildingCoder/CmdSelectionChanged.cs
-
-	// What ive tried
-	// 1) Get UIApplication only once. Suggested by Jeremy here: http://disq.us/p/26ct2oj
-	// 2) Does disposing of a selection help any? "App.Uiapp.ActiveUIDocument.Selection.Dispose();" No.
-	// 3) Does unloading and reloading a panel on the tab jog things? "	tab.Panels.Remove(new  Autodesk.Windows.RibbonPanel());" No
-	// 4) Can i fiddle with the Tab Title?
-	// 5) What property change triggers the event. Property of what?
+	// Development Notes
+	// https://www.notion.so/SelectionChangedCommand-cs-90454dbb87a544b1a22ca914d14ae1cd
 
 	[Transaction(TransactionMode.ReadOnly)]
 	public class SelectionChangedCommand : IExternalCommand
@@ -35,17 +28,9 @@ namespace BaseRevitModeless.Commands
 
 		#region Fields (SC)
 
-		private static ExternalCommandData _commandData;
-
-		private Application _rvtApp;
-
-		private static Document _rvtDoc;
-
-		private UIApplication _rvtUiApp;
-
-		private UIDocument _rvtUiDoc;
-
 		private static bool _subscribed;
+
+		private static int _subscribedCount;
 
 		#endregion
 
@@ -53,43 +38,13 @@ namespace BaseRevitModeless.Commands
 
 		public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
 		{
-			if(_rvtUiApp is null) // #1
-			{
-				_rvtUiApp = App.Uiapp; // #1
-			}
-
-			_commandData = commandData;
-			_rvtApp      = commandData.Application.Application;
-			_rvtDoc      = commandData.Application.ActiveUIDocument.Document;
-			_rvtUiDoc    = commandData.Application.ActiveUIDocument;
-
-			foreach(var tab in ComponentManager.Ribbon.Tabs)
-			{
-				if(tab.Id == "Modify")
-				{
-					if(_subscribed)
-					{
-						tab.PropertyChanged -= PanelEvent;
-						_subscribed         =  false;
-					}
-					else
-					{
-						tab.PropertyChanged += PanelEvent;
-						_subscribed         =  true;
-					}
-
-
-					//Utility.TabPropertyDataExport(_rvtDoc, tab);
-					//Utility.TabEventDataExport(_rvtDoc, tab);
-					//Utility.TabMemberDataExport(_rvtDoc, tab);
-
-					break;
-				}
-			}
+			ToggleSubscription();
 
 			Debug.WriteLine("--------------------------------------------------------------------------");
 			Debug.IndentLevel = 1;
-			Debug.Print($"CmdSelectionChanged - _subscribed = {_subscribed}");
+
+			Debug.Print($"CmdSelectionChanged - _subscribed = {_subscribed}, _subscribedCount = {_subscribedCount}");
+
 			Debug.IndentLevel = 0;
 			Debug.WriteLine("--------------------------------------------------------------------------");
 
@@ -97,17 +52,60 @@ namespace BaseRevitModeless.Commands
 		}
 
 
-		private void PanelEvent(object sender, PropertyChangedEventArgs e)
+		private void TabActivatedEvent(object sender, EventArgs e)
+		{
+			Debug.IndentLevel = 1;
+
+			Debug.Print("Tab Activated Event Event Fired");
+
+			Debug.IndentLevel = 0;
+		}
+
+
+		private void TabDeactivatedEvent(object sender, EventArgs e)
+		{
+			Debug.IndentLevel = 1;
+
+			Debug.Print("Tab Deactivated Event Event Fired");
+
+			Debug.IndentLevel = 0;
+		}
+
+
+		private void TabHostEvent(object sender, EventArgs e)
+		{
+			Debug.IndentLevel = 1;
+
+			Debug.Print("Tab Host Event Fired");
+
+			Debug.IndentLevel = 0;
+		}
+
+
+		private void TabInitializingEvent(object sender, EventArgs e)
+		{
+			Debug.IndentLevel = 1;
+
+			Debug.Print("Tab Initializing Event Fired");
+
+			Debug.IndentLevel = 0;
+		}
+
+
+		private void TabPropertyChangedEvent(object sender, PropertyChangedEventArgs e)
 		{
 			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
 
-			var areStringsEquals = string.Equals(e.PropertyName, "Title", StringComparison.CurrentCultureIgnoreCase);
+			var comparer1 = e.PropertyName;
+			var comparer2 = "Title";
+
+			var areStringsEquals = string.Equals(comparer1, comparer2, StringComparison.CurrentCultureIgnoreCase);
 
 			if(areStringsEquals)
 			{
 				Debug.WriteLine("--------------------------------------------------------------------------");
 
-				List<ElementId> elementIds = _rvtUiApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList(); // #1
+				List<ElementId> elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
 				var elementIdsCount = elementIds.Count;
 
@@ -127,7 +125,9 @@ namespace BaseRevitModeless.Commands
 				var message = $"Selection Changed - Element Id's: {elementIdsForMessage}";
 
 				Debug.IndentLevel = 1;
+
 				Debug.Print(message);
+
 				Debug.IndentLevel = 0;
 
 				if(!_subscribed)
@@ -140,12 +140,40 @@ namespace BaseRevitModeless.Commands
 
 				Debug.WriteLine("--------------------------------------------------------------------------");
 			}
+		}
 
 
-			//else
-			//{
-			//	Debug.Print($"Event Property Name: {e.PropertyName}");
-			//}
+		private void ToggleSubscription()
+		{
+			foreach(var tab in ComponentManager.Ribbon.Tabs)
+			{
+				if(tab.Id == "Modify")
+				{
+					if(_subscribed)
+					{
+						tab.PropertyChanged -= TabPropertyChangedEvent;
+						tab.Activated       -= TabActivatedEvent;
+						tab.Initializing    -= TabInitializingEvent;
+						tab.Deactivated     -= TabDeactivatedEvent;
+						tab.HostEvent       -= TabHostEvent;
+
+						_subscribed = false;
+					}
+					else
+					{
+						tab.PropertyChanged += TabPropertyChangedEvent;
+						tab.Activated       += TabActivatedEvent;
+						tab.Initializing    += TabInitializingEvent;
+						tab.Deactivated     += TabDeactivatedEvent;
+						tab.HostEvent       += TabHostEvent;
+
+						_subscribed = true;
+						_subscribedCount++;
+					}
+
+					break;
+				}
+			}
 		}
 
 		#endregion

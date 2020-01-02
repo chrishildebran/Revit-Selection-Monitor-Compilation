@@ -2,7 +2,7 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ PropertyViewModel.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/02/2020 @ 11:09 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.ViewModel
 {

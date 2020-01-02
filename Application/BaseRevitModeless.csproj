@@ -79,13 +79,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="AppTest.cs" />
     <Compile Include="Commands\CmdChangedCommand .cs" />
     <None Include="Idea\absIRevitModel.cs" />
     <None Include="Idea\Id8ElementChangeSet.cs" />
     <None Include="Idea\IRevitModel.cs" />
+    <Compile Include="Commands\SelectionChangedCommand.cs" />
     <Compile Include="Utilities\Exporters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Commands\SelectionChangedCommand.cs" />
     <None Include="Idea\SelectionObserver.cs" />
     <Compile Include="Utilities\References.cs" />
     <Compile Include="Ribbon\RibbonTab.cs" />

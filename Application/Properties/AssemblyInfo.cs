@@ -2,7 +2,7 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ AssemblyInfo.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/02/2020 @ 11:09 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -31,4 +31,4 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly : AssemblyVersion("2019.12.30")]
+[assembly : AssemblyVersion("2020.1.2")]

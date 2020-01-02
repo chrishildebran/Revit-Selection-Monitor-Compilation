@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
 // Solution:............ Test
 // Project:............. BaseRevitModeless
-// File:................ PropertyViewModel.cs
-// Last Code Cleanup:... 12/31/2019 @ 3:09 PM Using ReSharper ✓
+// File:................ PropertySelectionChangedViewModel.cs
+// Last Code Cleanup:... 01/02/2020 @ 11:09 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace BaseRevitModeless.ViewModel
 {
@@ -68,7 +68,7 @@ namespace BaseRevitModeless.ViewModel
 				_rvtCommandData = rvtCommandData;
 				_rvtApp         = rvtCommandData.Application.Application;
 				_rvtDoc         = rvtCommandData.Application.ActiveUIDocument.Document;
-				_rvtUiApp       = rvtCommandData.Application;
+				_rvtUiApp       = App.UIApp;
 				_rvtUiDoc       = rvtCommandData.Application.ActiveUIDocument;
 			}
 
