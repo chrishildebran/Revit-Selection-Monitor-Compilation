@@ -14,5 +14,6 @@ Development Notes&#xD;
   &lt;Assembly Path="C:\DevGit\Josh-Lumley-5-Secrets-Video-Follow\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:Int64 x:Key="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue">13</s:Int64>
+	<s:Boolean x:Key="/Default/Environment/OpenDocument/OpenDocumentAfterModification/@EntryValue">False</s:Boolean>
 	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">01/02/2020 06:19:59</s:String>
 	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/OptionsDialogView/Position/@EntryValue">[473,189](2065,1475)</s:String></wpf:ResourceDictionary>
