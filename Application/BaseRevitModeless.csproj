@@ -79,14 +79,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Commands\CmdChangedCommand .cs" />
-    <None Include="Idea\absIRevitModel.cs" />
-    <None Include="Idea\Id8ElementChangeSet.cs" />
-    <None Include="Idea\IRevitModel.cs" />
     <Compile Include="Commands\SelectionChangedCommand.cs" />
+    <Compile Include="EventFactory.cs" />
+    <Compile Include="SelectionWatcher.cs" />
+    <Compile Include="DocumentEvent.cs" />
     <Compile Include="Utilities\Exporters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Idea\SelectionObserver.cs" />
+    <Compile Include="Utilities\CodeLocation.cs" />
     <Compile Include="Utilities\References.cs" />
     <Compile Include="Ribbon\RibbonTab.cs" />
     <Compile Include="Ribbon\RibbonPushButtons.cs" />
@@ -123,7 +122,9 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="MVVM\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <PropertyGroup>
     <PostBuildEvent>if exist "C:\ProgramData\Autodesk\Revit\Addins\2020" copy "$(ProjectDir)*.addin" "C:\ProgramData\Autodesk\Revit\Addins\2020"

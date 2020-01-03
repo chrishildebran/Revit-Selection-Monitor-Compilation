@@ -2,15 +2,13 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ RibbonTab.cs
-// Last Code Cleanup:... 01/03/2020 @ 7:30 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/03/2020 @ 2:51 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace BaseRevitModeless.Ribbon
 {
 
 	using System.Reflection;
-
-	using Autodesk.Revit.UI;
 
 	public class RibbonTab
 	{
@@ -49,14 +47,14 @@ namespace BaseRevitModeless.Ribbon
 
 		#region Methods (SC)
 
-		public void Create(UIControlledApplication uiControlledApplication)
+		public void Create()
 		{
 			// Tab
-			uiControlledApplication.CreateRibbonTab(RibbonTabName);
+			App.UIContApp.CreateRibbonTab(RibbonTabName);
 
 
 			// Panel
-			var ribbonPanel = uiControlledApplication.CreateRibbonPanel(RibbonTabName, RibbonPanelName);
+			var ribbonPanel = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelName);
 
 
 			// Buttons

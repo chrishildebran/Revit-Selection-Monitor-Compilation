@@ -2,12 +2,13 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ App.cs
-// Last Code Cleanup:... 01/03/2020 @ 7:30 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/03/2020 @ 2:52 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace BaseRevitModeless
 {
 
+	using System.Diagnostics;
 	using System.Reflection;
 
 	using Autodesk.Revit.Attributes;
@@ -32,17 +33,25 @@ namespace BaseRevitModeless
 
 		public Result OnShutdown(UIControlledApplication uiContApp)
 		{
+			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
+
+			EventFactory.ShutDown();
+
 			return Result.Succeeded;
 		}
 
 
 		public Result OnStartup(UIControlledApplication uiContApp)
 		{
+			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
+
 			UIContApp = uiContApp;
 			UIApp     = GetUiApplication();
 
+			EventFactory.StartUp();
+
 			var ribbon = new RibbonTab();
-			ribbon.Create(uiContApp);
+			ribbon.Create();
 
 			if(!References.LoadTelerikReferences(typeof(App).Assembly))
 			{
@@ -55,9 +64,9 @@ namespace BaseRevitModeless
 
 		private static UIApplication GetUiApplication()
 		{
-			var uiContApp = UIContApp;
+			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
 
-			var versionNumber = uiContApp.ControlledApplication.VersionNumber;
+			var versionNumber = UIContApp.ControlledApplication.VersionNumber;
 
 			var fieldName = string.Empty;
 
@@ -88,9 +97,9 @@ namespace BaseRevitModeless
 					break;
 			}
 
-			var fieldInfo = uiContApp.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+			var fieldInfo = UIContApp.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
 
-			var uiApplication = (UIApplication) fieldInfo?.GetValue(uiContApp);
+			var uiApplication = (UIApplication) fieldInfo?.GetValue(UIContApp);
 
 			return uiApplication;
 		}
