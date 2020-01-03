@@ -2,8 +2,9 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ PropertySelectionChangedView.xaml.cs
-// Last Code Cleanup:... 01/02/2020 @ 11:09 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/03/2020 @ 7:30 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
+// Development Notes
 namespace BaseRevitModeless.View
 {
 

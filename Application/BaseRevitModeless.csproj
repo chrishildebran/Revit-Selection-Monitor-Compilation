@@ -79,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="AppTest.cs" />
     <Compile Include="Commands\CmdChangedCommand .cs" />
     <None Include="Idea\absIRevitModel.cs" />
     <None Include="Idea\Id8ElementChangeSet.cs" />

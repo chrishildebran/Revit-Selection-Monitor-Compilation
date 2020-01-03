@@ -2,7 +2,7 @@
 // Solution:............ Test
 // Project:............. BaseRevitModeless
 // File:................ SelectionChangedCommand.cs
-// Last Code Cleanup:... 01/02/2020 @ 1:05 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/03/2020 @ 7:30 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace BaseRevitModeless.Commands
@@ -60,7 +60,6 @@ namespace BaseRevitModeless.Commands
 
 			_elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
-
 			var eidCount = 1;
 
 			string elementIdsForMessage;
@@ -91,55 +90,7 @@ namespace BaseRevitModeless.Commands
 		}
 
 
-		private void TabActivatedEvent(object sender, EventArgs e)
-		{
-			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
-
-			Debug.IndentLevel = 1;
-
-			Debug.Print("Tab Activated Event Event Fired");
-
-			GetElementIds();
-		}
-
-
-		private void TabDeactivatedEvent(object sender, EventArgs e)
-		{
-			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
-
-			Debug.IndentLevel = 1;
-
-			Debug.Print("Tab Deactivated Event Event Fired");
-
-			GetElementIds();
-		}
-
-
-		private void TabHostEvent(object sender, EventArgs e)
-		{
-			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
-
-			Debug.IndentLevel = 1;
-
-			Debug.Print("Tab Host Event Fired");
-
-			GetElementIds();
-		}
-
-
-		private void TabInitializingEvent(object sender, EventArgs e)
-		{
-			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
-
-			Debug.IndentLevel = 1;
-
-			Debug.Print("Tab Initializing Event Fired");
-
-			GetElementIds();
-		}
-
-
-		private void TabPropertyChangedEvent(object sender, PropertyChangedEventArgs e)
+		private static void TabPropertyChangedEvent(object sender, PropertyChangedEventArgs e)
 		{
 			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
 
@@ -159,7 +110,7 @@ namespace BaseRevitModeless.Commands
 		}
 
 
-		private void ToggleSubscription()
+		private static void ToggleSubscription()
 		{
 			foreach(var tab in ComponentManager.Ribbon.Tabs)
 			{
@@ -169,20 +120,12 @@ namespace BaseRevitModeless.Commands
 					{
 						// TODO - Figure out how to kill the event for real!
 						tab.PropertyChanged -= TabPropertyChangedEvent;
-						tab.Activated       -= TabActivatedEvent;
-						tab.Initializing    -= TabInitializingEvent;
-						tab.Deactivated     -= TabDeactivatedEvent;
-						tab.HostEvent       -= TabHostEvent;
 
 						_subscribed = false;
 					}
 					else
 					{
 						tab.PropertyChanged += TabPropertyChangedEvent;
-						tab.Activated       += TabActivatedEvent;
-						tab.Initializing    += TabInitializingEvent;
-						tab.Deactivated     += TabDeactivatedEvent;
-						tab.HostEvent       += TabHostEvent;
 
 						_subscribed = true;
 						_subscribedCount++;
