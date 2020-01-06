@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ RibbonTab.cs
-// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 10:04 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Ribbon
@@ -15,22 +15,15 @@ namespace SelectionMonitorCore.Ribbon
 
 		public RibbonTab()
 		{
-			RibbonPanelMonitorName = "Modeless Views";
-			RibbonPanelViewName    = "Monitor";
-			RibbonTabName          = "Kelly Dev";
+			RibbonPanelName = "Monitor";
+			RibbonTabName   = "Kelly Monitor";
 		}
 
 		#endregion
 
 		#region Properties (SC)
 
-		private static string RibbonPanelMonitorName
-		{
-			get;
-			set;
-		}
-
-		private static string RibbonPanelViewName
+		private static string RibbonPanelName
 		{
 			get;
 			set;
@@ -53,18 +46,13 @@ namespace SelectionMonitorCore.Ribbon
 
 
 			// Panels
-			var ribbonPanelMonitor = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelMonitorName);
-			var ribbonPanelViews   = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelViewName);
+			var ribbonPanelMonitor = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelName);
 
 
 			// Buttons
 			ribbonPanelMonitor.AddItem(RibbonPushButtons.MonitorOnIdlingCommand(RibbonTabName + ribbonPanelMonitor));
 
 			ribbonPanelMonitor.AddItem(RibbonPushButtons.MonitorOnPropertyChangedCommand(RibbonTabName + ribbonPanelMonitor));
-
-			ribbonPanelViews.AddItem(RibbonPushButtons.PropertyView(RibbonPanelViewName + ribbonPanelViews));
-
-			ribbonPanelViews.AddItem(RibbonPushButtons.PropertySelectionChangedView(RibbonPanelViewName + ribbonPanelViews));
 		}
 
 		#endregion

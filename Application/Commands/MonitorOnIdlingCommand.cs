@@ -84,7 +84,7 @@ namespace SelectionMonitorCore.Commands
 
 			var message = string.Empty;
 
-			if(null == _monitorOnIdling.SelectedElementIds)
+			if(_monitorOnIdling.SelectedElementIds == null)
 			{
 				message = "No selection";
 

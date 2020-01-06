@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnPropertyChangeCommand.cs
-// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 9:05 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Commands
@@ -81,11 +81,23 @@ namespace SelectionMonitorCore.Commands
 		}
 
 
-		private static void GetElementIds()
+		private static void TabPropertyChangedEvent(object sender, PropertyChangedEventArgs e)
 		{
+			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
+
 			Debug.WriteLine("--------------------------------------------------------------------------");
+
+			if(!string.Equals(e.PropertyName, "Title", StringComparison.CurrentCultureIgnoreCase))
+			{
+				Debug.WriteLine("Un-Equal Strings - PropertyName == Title");
+
+				return;
+			}
+
 			Debug.IndentLevel = 1;
-			_elementIds       = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
+			Debug.Print("Monitor On Property Change Command");
+
+			_elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
 			var eidCount = 1;
 
@@ -111,22 +123,6 @@ namespace SelectionMonitorCore.Commands
 			}
 
 			Debug.WriteLine("--------------------------------------------------------------------------");
-		}
-
-
-		private static void TabPropertyChangedEvent(object sender, PropertyChangedEventArgs e)
-		{
-			Debug.Assert(sender is RibbonTab, "expected sender to be a ribbon tab");
-
-			var comparer1 = e.PropertyName;
-			var comparer2 = "Title";
-
-			var areStringsEquals = string.Equals(comparer1, comparer2, StringComparison.CurrentCultureIgnoreCase);
-
-			if(areStringsEquals)
-			{
-				GetElementIds();
-			}
 		}
 
 		#endregion

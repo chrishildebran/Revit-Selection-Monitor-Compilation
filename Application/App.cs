@@ -2,13 +2,12 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ App.cs
-// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 8:58 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore
 {
 
-	using System.Diagnostics;
 	using System.Reflection;
 
 	using Autodesk.Revit.Attributes;
@@ -34,8 +33,6 @@ namespace SelectionMonitorCore
 
 		public Result OnShutdown(UIControlledApplication uiContApp)
 		{
-			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
-
 			EventFactory.ShutDown();
 
 			return Result.Succeeded;
@@ -44,8 +41,6 @@ namespace SelectionMonitorCore
 
 		public Result OnStartup(UIControlledApplication uiContApp)
 		{
-			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
-
 			UIContApp = uiContApp;
 			UIApp     = GetUiApplication();
 
@@ -65,8 +60,6 @@ namespace SelectionMonitorCore
 
 		private static UIApplication GetUiApplication()
 		{
-			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
-
 			var versionNumber = UIContApp.ControlledApplication.VersionNumber;
 
 			var fieldName = string.Empty;

@@ -57,21 +57,8 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls, Version=2019.3.1023.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2019.3.1023.45\Telerik.Windows.Controls.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.Windows.Controls.Data, Version=2019.3.1023.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2019.3.1023.45\Telerik.Windows.Controls.Data.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.Windows.Data, Version=2019.3.1023.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2019.3.1023.45\Telerik.Windows.Data.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -91,17 +78,6 @@
     <Compile Include="Ribbon\RibbonTab.cs" />
     <Compile Include="Ribbon\RibbonPushButtons.cs" />
     <Compile Include="Ribbon\Image.cs" />
-    <Compile Include="ExternalEvents\PropertyExternalEvent.cs" />
-    <Compile Include="Forms\Model\PropertyModel.cs" />
-    <Compile Include="Forms\ViewModel\PropertySelectionChangedViewModel.cs" />
-    <Compile Include="Forms\View\PropertySelectionChangedView.xaml.cs">
-      <DependentUpon>PropertySelectionChangedView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\View\PropertyView.xaml.cs">
-      <DependentUpon>PropertyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ViewModel\PropertyViewModel.cs" />
-    <Compile Include="Forms\Model\SettingModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SelectionMonitorCore.addin" />
@@ -114,14 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Forms\View\PropertySelectionChangedView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Forms\View\PropertyView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
