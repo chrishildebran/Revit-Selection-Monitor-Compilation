@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ RibbonTab.cs
-// Last Code Cleanup:... 01/06/2020 @ 10:04 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Ribbon

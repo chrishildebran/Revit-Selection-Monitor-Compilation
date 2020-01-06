@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ App.cs
-// Last Code Cleanup:... 01/06/2020 @ 8:58 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore
@@ -15,7 +15,6 @@ namespace SelectionMonitorCore
 
 	using SelectionMonitorCore.Events;
 	using SelectionMonitorCore.Ribbon;
-	using SelectionMonitorCore.Utilities;
 
 	[Transaction(TransactionMode.Manual)]
 	internal class App : IExternalApplication
@@ -48,11 +47,6 @@ namespace SelectionMonitorCore
 
 			var ribbon = new RibbonTab();
 			ribbon.Create();
-
-			if(!References.LoadTelerikReferences(typeof(App).Assembly))
-			{
-				TaskDialog.Show("Reference Load Error", "One or more references the Kelly Tools For Revit Addin depends upon did not load during Revit startup.");
-			}
 
 			return Result.Succeeded;
 		}
