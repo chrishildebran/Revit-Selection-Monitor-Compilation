@@ -1,21 +1,27 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Test
-// Project:............. BaseRevitModeless
+// Solution:............ SelectionMonitor
+// Project:............. Core
 // File:................ RibbonPushButtons.cs
-// Last Code Cleanup:... 01/03/2020 @ 2:51 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
-namespace BaseRevitModeless.Ribbon
+namespace SelectionMonitorCore.Ribbon
 {
 
-	using System.Diagnostics;
-	using System.Runtime.CompilerServices;
-	using System.Text;
+	using System.Reflection;
 
 	using Autodesk.Revit.UI;
 
+	using SelectionMonitorCore.Utilities;
+
 	public static class RibbonPushButtons
 	{
+
+		#region Fields (SC)
+
+		private static string path = Assembly.GetExecutingAssembly().Location;
+
+		#endregion
 
 		#region Properties (SC)
 
@@ -25,13 +31,12 @@ namespace BaseRevitModeless.Ribbon
 
 		#region Methods (SC)
 
-		public static PushButtonData PropertySelectionChangedView(RibbonPanel ribbonPanel, string tabName, string path)
+		public static PushButtonData MonitorOnIdlingCommand(string buttonNameNew)
 		{
-			var methodName  = GetMethodName(1);
-			var buttonName  = ribbonPanel.Name + tabName + methodName;
-			var buttonTitle = ChangeToTitleCaseString(methodName, true);
+			var methodName  = CodeLocation.GetMethodName(1);
+			var buttonTitle = "Monitor On\nProject Idling";
 
-			return new PushButtonData(buttonName, buttonTitle, path, "BaseRevitModeless.View.PropertySelectionChangedView")
+			return new PushButtonData(buttonNameNew + methodName, buttonTitle, path, "SelectionMonitorCore.Commands.MonitorOnIdlingCommand")
 			       {
 				       LargeImage = Image.Get(ImagePath + "AceOfSpades_32.png"),
 				       Image      = Image.Get(ImagePath + "AceOfSpades_16.png")
@@ -39,13 +44,12 @@ namespace BaseRevitModeless.Ribbon
 		}
 
 
-		public static PushButtonData PropertyView(RibbonPanel ribbonPanel, string tabName, string path)
+		public static PushButtonData MonitorOnPropertyChangedCommand(string buttonNameNew)
 		{
-			var methodName  = GetMethodName(1);
-			var buttonName  = ribbonPanel.Name + tabName + methodName;
-			var buttonTitle = ChangeToTitleCaseString(methodName, true);
+			var methodName  = CodeLocation.GetMethodName(1);
+			var buttonTitle = "Monitor On\nProperty Change";
 
-			return new PushButtonData(buttonName, buttonTitle, path, "BaseRevitModeless.View.PropertyView")
+			return new PushButtonData(buttonNameNew + methodName, buttonTitle, path, "SelectionMonitorCore.Commands.MonitorOnPropertyChangeCommand")
 			       {
 				       LargeImage = Image.Get(ImagePath + "AceOfSpades_32.png"),
 				       Image      = Image.Get(ImagePath + "AceOfSpades_16.png")
@@ -53,13 +57,12 @@ namespace BaseRevitModeless.Ribbon
 		}
 
 
-		public static PushButtonData SelectionChangedCommand(RibbonPanel ribbonPanel, string tabName, string path)
+		public static PushButtonData PropertySelectionChangedView(string buttonNameNew)
 		{
-			var methodName  = GetMethodName(1);
-			var buttonName  = ribbonPanel.Name + tabName + methodName;
-			var buttonTitle = ChangeToTitleCaseString(methodName, true);
+			var methodName  = CodeLocation.GetMethodName(1);
+			var buttonTitle = "Property Selection\nChanged View";
 
-			return new PushButtonData(buttonName, buttonTitle, path, "BaseRevitModeless.Commands.SelectionChangedCommand")
+			return new PushButtonData(buttonNameNew + methodName, buttonTitle, path, "SelectionMonitorCore.View.PropertySelectionChangedView")
 			       {
 				       LargeImage = Image.Get(ImagePath + "AceOfSpades_32.png"),
 				       Image      = Image.Get(ImagePath + "AceOfSpades_16.png")
@@ -67,43 +70,16 @@ namespace BaseRevitModeless.Ribbon
 		}
 
 
-		private static string ChangeToTitleCaseString(string text, bool preserveAcronyms)
+		public static PushButtonData PropertyView(string buttonNameNew)
 		{
-			if(string.IsNullOrWhiteSpace(text))
-			{
-				return string.Empty;
-			}
+			var methodName  = CodeLocation.GetMethodName(1);
+			var buttonTitle = "Property View";
 
-			var newText = new StringBuilder(text.Length * 2);
-			newText.Append(text[0]);
-
-			for(var i = 1; i < text.Length; i++)
-			{
-				var characterCurrent = text[i];
-
-				if(char.IsUpper(characterCurrent) || char.IsNumber(characterCurrent))
-				{
-					if(text[i - 1] != ' ' && !char.IsUpper(text[i - 1]) /*new-->*/ && !char.IsNumber(text[i - 1]) /*<--new*/ || preserveAcronyms && char.IsUpper(text[i - 1]) && i < text.Length - 1 && !char.IsUpper(text[i + 1]))
-					{
-						newText.Append(' ');
-					}
-				}
-
-				newText.Append(characterCurrent);
-			}
-
-			return newText.ToString();
-		}
-
-
-		[MethodImpl(MethodImplOptions.NoInlining)]
-		private static string GetMethodName(int frameIndex)
-		{
-			var stackTrace = new StackTrace();
-			var frame      = stackTrace.GetFrame(frameIndex);
-			var method     = frame.GetMethod();
-
-			return method == null ? "Could Not Get Current Method Name" : method.Name;
+			return new PushButtonData(buttonNameNew + methodName, buttonTitle, path, "SelectionMonitorCore.View.PropertyView")
+			       {
+				       LargeImage = Image.Get(ImagePath + "AceOfSpades_32.png"),
+				       Image      = Image.Get(ImagePath + "AceOfSpades_16.png")
+			       };
 		}
 
 		#endregion

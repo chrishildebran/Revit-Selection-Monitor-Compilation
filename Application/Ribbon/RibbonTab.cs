@@ -1,37 +1,36 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Test
-// Project:............. BaseRevitModeless
+// Solution:............ SelectionMonitor
+// Project:............. Core
 // File:................ RibbonTab.cs
-// Last Code Cleanup:... 01/03/2020 @ 2:51 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
-namespace BaseRevitModeless.Ribbon
+namespace SelectionMonitorCore.Ribbon
 {
-
-	using System.Reflection;
 
 	public class RibbonTab
 	{
-
-		#region Fields (SC)
-
-		private static string _path = Assembly.GetExecutingAssembly().Location;
-
-		#endregion
 
 		#region Constructors (SC)
 
 		public RibbonTab()
 		{
-			RibbonTabName   = "Kelly Dev";
-			RibbonPanelName = "Modeless";
+			RibbonPanelMonitorName = "Modeless Views";
+			RibbonPanelViewName    = "Monitor";
+			RibbonTabName          = "Kelly Dev";
 		}
 
 		#endregion
 
 		#region Properties (SC)
 
-		private static string RibbonPanelName
+		private static string RibbonPanelMonitorName
+		{
+			get;
+			set;
+		}
+
+		private static string RibbonPanelViewName
 		{
 			get;
 			set;
@@ -53,14 +52,19 @@ namespace BaseRevitModeless.Ribbon
 			App.UIContApp.CreateRibbonTab(RibbonTabName);
 
 
-			// Panel
-			var ribbonPanel = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelName);
+			// Panels
+			var ribbonPanelMonitor = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelMonitorName);
+			var ribbonPanelViews   = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelViewName);
 
 
 			// Buttons
-			ribbonPanel.AddItem(RibbonPushButtons.SelectionChangedCommand(ribbonPanel, RibbonTabName, _path));
-			ribbonPanel.AddItem(RibbonPushButtons.PropertyView(ribbonPanel, RibbonTabName, _path));
-			ribbonPanel.AddItem(RibbonPushButtons.PropertySelectionChangedView(ribbonPanel, RibbonTabName, _path));
+			ribbonPanelMonitor.AddItem(RibbonPushButtons.MonitorOnIdlingCommand(RibbonTabName + ribbonPanelMonitor));
+
+			ribbonPanelMonitor.AddItem(RibbonPushButtons.MonitorOnPropertyChangedCommand(RibbonTabName + ribbonPanelMonitor));
+
+			ribbonPanelViews.AddItem(RibbonPushButtons.PropertyView(RibbonPanelViewName + ribbonPanelViews));
+
+			ribbonPanelViews.AddItem(RibbonPushButtons.PropertySelectionChangedView(RibbonPanelViewName + ribbonPanelViews));
 		}
 
 		#endregion

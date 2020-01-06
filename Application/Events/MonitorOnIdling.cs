@@ -1,11 +1,11 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Test
-// Project:............. BaseRevitModeless
-// File:................ SelectionWatcher.cs
-// Last Code Cleanup:... 01/03/2020 @ 2:52 PM Using ReSharper ✓
+// Solution:............ SelectionMonitor
+// Project:............. Core
+// File:................ MonitorOnIdling.cs
+// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
-namespace BaseRevitModeless
+namespace SelectionMonitorCore.Events
 {
 
 	using System;
@@ -15,9 +15,9 @@ namespace BaseRevitModeless
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI.Events;
 
-	using BaseRevitModeless.Utilities;
+	using SelectionMonitorCore.Utilities;
 
-	internal class SelectionWatcher
+	internal class MonitorOnIdling
 	{
 
 		#region Fields (SC)
@@ -28,7 +28,7 @@ namespace BaseRevitModeless
 
 		#region Constructors (SC)
 
-		public SelectionWatcher()
+		public MonitorOnIdling()
 		{
 			Debug.WriteLine("SelectionWatcher - Constructor");
 
@@ -39,7 +39,7 @@ namespace BaseRevitModeless
 
 		#region Destructors (SC)
 
-		~SelectionWatcher()
+		~MonitorOnIdling()
 		{
 			Debug.WriteLine("SelectionWatcher - Destructor");
 

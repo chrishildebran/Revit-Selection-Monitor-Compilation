@@ -1,10 +1,10 @@
 ﻿<Window x:Name="PropertryWindow"
-        x:Class="BaseRevitModeless.View.PropertySelectionChangedView"
+        x:Class="SelectionMonitorCore.Forms.View.PropertySelectionChangedView"
         DataContext='{Binding Mode=Default,  RelativeSource={RelativeSource Self}}'
         Height="500"
         MinHeight="500"
         Title="JHKelly - Common Parameters"
-        d:DataContext='{d:DesignInstance {x:Type viewModel1:PropertySelectionChangedViewModel}}'
+        d:DataContext='{d:DesignInstance {x:Type viewModel:PropertySelectionChangedViewModel}}'
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Topmost="True"
@@ -14,7 +14,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:viewModel1="clr-namespace:BaseRevitModeless.ViewModel">
+        xmlns:viewModel="clr-namespace:SelectionMonitorCore.Forms.ViewModel">
     <Grid>
         <Button x:Name="Update"
                 Content="Update"

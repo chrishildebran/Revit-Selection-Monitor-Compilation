@@ -1,17 +1,17 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Test
-// Project:............. BaseRevitModeless
+// Solution:............ SelectionMonitor
+// Project:............. Core
 // File:................ PropertyExternalEvent.cs
-// Last Code Cleanup:... 01/03/2020 @ 2:51 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
-namespace BaseRevitModeless.ExternalEvents
+namespace SelectionMonitorCore.ExternalEvents
 {
 
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using BaseRevitModeless.Model;
+	using SelectionMonitorCore.Forms.Model;
 
 	public class PropertyExternalEvent : IExternalEventHandler
 	{

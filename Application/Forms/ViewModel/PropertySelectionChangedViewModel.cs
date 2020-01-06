@@ -1,11 +1,11 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Test
-// Project:............. BaseRevitModeless
+// Solution:............ SelectionMonitor
+// Project:............. Core
 // File:................ PropertySelectionChangedViewModel.cs
-// Last Code Cleanup:... 01/03/2020 @ 2:51 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
-namespace BaseRevitModeless.ViewModel
+namespace SelectionMonitorCore.Forms.ViewModel
 {
 
 	using System;
@@ -18,8 +18,8 @@ namespace BaseRevitModeless.ViewModel
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using BaseRevitModeless.ExternalEvents;
-	using BaseRevitModeless.Model;
+	using SelectionMonitorCore.ExternalEvents;
+	using SelectionMonitorCore.Forms.Model;
 
 	using Telerik.Windows.Controls;
 	using Telerik.Windows.Controls.Data.PropertyGrid;

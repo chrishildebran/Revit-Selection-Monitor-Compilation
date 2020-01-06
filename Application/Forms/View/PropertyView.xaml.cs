@@ -1,11 +1,11 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Test
-// Project:............. BaseRevitModeless
-// File:................ PropertySelectionChangedView.xaml.cs
-// Last Code Cleanup:... 01/03/2020 @ 2:51 PM Using ReSharper ✓
+// Solution:............ SelectionMonitor
+// Project:............. Core
+// File:................ PropertyView.xaml.cs
+// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
-namespace BaseRevitModeless.View
+namespace SelectionMonitorCore.Forms.View
 {
 
 	using System.Windows;
@@ -14,12 +14,12 @@ namespace BaseRevitModeless.View
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using BaseRevitModeless.ViewModel;
+	using SelectionMonitorCore.Forms.ViewModel;
 
 	using Application = Autodesk.Revit.ApplicationServices.Application;
 
 	[Transaction(TransactionMode.Manual)]
-	public partial class PropertySelectionChangedView : IExternalCommand
+	public partial class PropertyView : IExternalCommand
 	{
 
 		#region Fields (SC)
@@ -38,7 +38,7 @@ namespace BaseRevitModeless.View
 
 		#region Constructors (SC)
 
-		public PropertySelectionChangedView()
+		public PropertyView()
 		{
 			InitializeComponent();
 		}
@@ -65,7 +65,7 @@ namespace BaseRevitModeless.View
 			//	return Result.Cancelled;
 			//}
 
-			DataContext = new PropertySelectionChangedViewModel(_rvtCommandData);
+			DataContext = new PropertyViewModel(_rvtCommandData);
 
 			Show();
 

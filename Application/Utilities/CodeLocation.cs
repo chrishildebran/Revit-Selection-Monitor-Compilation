@@ -1,11 +1,11 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Test
-// Project:............. BaseRevitModeless
+// Solution:............ SelectionMonitor
+// Project:............. Core
 // File:................ CodeLocation.cs
-// Last Code Cleanup:... 01/03/2020 @ 2:51 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
-namespace BaseRevitModeless.Utilities
+namespace SelectionMonitorCore.Utilities
 {
 
 	using System.Diagnostics;

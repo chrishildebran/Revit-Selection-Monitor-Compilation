@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Selection Monitor</Name>
+    <Assembly>C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore\SelectionMonitorCore.dll</Assembly>
+    <AddInId>16824613-93A7-4981-B2CF-27AB6E52280C</AddInId>
+    <FullClassName>SelectionMonitorCore.App</FullClassName>
+    <VendorId>JHK</VendorId>
+    <VendorDescription>JHK</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,11 +1,11 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ Test
-// Project:............. BaseRevitModeless
+// Solution:............ SelectionMonitor
+// Project:............. Core
 // File:................ App.cs
-// Last Code Cleanup:... 01/03/2020 @ 2:52 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/06/2020 @ 8:43 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
-namespace BaseRevitModeless
+namespace SelectionMonitorCore
 {
 
 	using System.Diagnostics;
@@ -14,8 +14,9 @@ namespace BaseRevitModeless
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.UI;
 
-	using BaseRevitModeless.Ribbon;
-	using BaseRevitModeless.Utilities;
+	using SelectionMonitorCore.Events;
+	using SelectionMonitorCore.Ribbon;
+	using SelectionMonitorCore.Utilities;
 
 	[Transaction(TransactionMode.Manual)]
 	internal class App : IExternalApplication

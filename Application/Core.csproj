@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>BaseRevitModeless</RootNamespace>
+    <RootNamespace>SelectionMonitorCore</RootNamespace>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -29,7 +29,7 @@
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>BaseRevitModeless</AssemblyName>
+    <AssemblyName>SelectionMonitorCore</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <OutputPath>bin\Debug\</OutputPath>
@@ -79,10 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Commands\SelectionChangedCommand.cs" />
-    <Compile Include="EventFactory.cs" />
-    <Compile Include="SelectionWatcher.cs" />
-    <Compile Include="DocumentEvent.cs" />
+    <Compile Include="Commands\MonitorOnIdlingCommand.cs" />
+    <Compile Include="Commands\MonitorOnPropertyChangeCommand.cs" />
+    <Compile Include="Events\EventFactory.cs" />
+    <Compile Include="Events\MonitorOnIdling.cs" />
+    <Compile Include="Events\DocumentEvents.cs" />
     <Compile Include="Utilities\Exporters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CodeLocation.cs" />
@@ -91,19 +92,19 @@
     <Compile Include="Ribbon\RibbonPushButtons.cs" />
     <Compile Include="Ribbon\Image.cs" />
     <Compile Include="ExternalEvents\PropertyExternalEvent.cs" />
-    <Compile Include="Model\PropertyModel.cs" />
-    <Compile Include="ViewModel\PropertySelectionChangedViewModel.cs" />
-    <Compile Include="View\PropertySelectionChangedView.xaml.cs">
+    <Compile Include="Forms\Model\PropertyModel.cs" />
+    <Compile Include="Forms\ViewModel\PropertySelectionChangedViewModel.cs" />
+    <Compile Include="Forms\View\PropertySelectionChangedView.xaml.cs">
       <DependentUpon>PropertySelectionChangedView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PropertyView.xaml.cs">
+    <Compile Include="Forms\View\PropertyView.xaml.cs">
       <DependentUpon>PropertyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\PropertyViewModel.cs" />
-    <Compile Include="Model\SettingModel.cs" />
+    <Compile Include="Forms\ViewModel\PropertyViewModel.cs" />
+    <Compile Include="Forms\Model\SettingModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Base Revit Modeless.addin" />
+    <None Include="SelectionMonitorCore.addin" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Ribbon\Images\AceOfSpades_16.png" />
@@ -115,22 +116,20 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\PropertySelectionChangedView.xaml">
+    <Page Include="Forms\View\PropertySelectionChangedView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\PropertyView.xaml">
+    <Page Include="Forms\View\PropertyView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MVVM\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <PropertyGroup>
     <PostBuildEvent>if exist "C:\ProgramData\Autodesk\Revit\Addins\2020" copy "$(ProjectDir)*.addin" "C:\ProgramData\Autodesk\Revit\Addins\2020"
-if exist "C:\ProgramData\Autodesk\Revit\Addins\2020\Base Revit Modeless" copy "$(ProjectDir)$(OutputPath)*.dll" "C:\ProgramData\Autodesk\Revit\Addins\2020\Base Revit Modeless"</PostBuildEvent>
+if exist "C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore" copy "$(ProjectDir)$(OutputPath)*.dll" "C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>if not exist "C:\ProgramData\Autodesk\Revit\Addins\2020\Base Revit Modeless" mkdir "C:\ProgramData\Autodesk\Revit\Addins\2020\Base Revit Modeless"</PreBuildEvent>
+    <PreBuildEvent>if not exist "C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore" mkdir "C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore"</PreBuildEvent>
   </PropertyGroup>
 </Project>
