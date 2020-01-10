@@ -32,7 +32,7 @@ namespace SelectionMonitorCore.Events
 		{
 			Debug.WriteLine("SelectionWatcher - Constructor");
 
-			App.UIContApp.Idling += OnIdling;
+			//////App.UIContApp.Idling += OnIdling;
 		}
 
 		#endregion
@@ -43,7 +43,7 @@ namespace SelectionMonitorCore.Events
 		{
 			Debug.WriteLine("SelectionWatcher - Destructor");
 
-			App.UIContApp.Idling -= OnIdling;
+			/////App.UIContApp.Idling -= OnIdling;
 		}
 
 		#endregion
@@ -91,7 +91,7 @@ namespace SelectionMonitorCore.Events
 		}
 
 
-		private void OnIdling(object sender, IdlingEventArgs e)
+		public void OnIdling(object sender, IdlingEventArgs e)
 		{
 			ICollection<ElementId> selected = App.UIApp.ActiveUIDocument.Selection.GetElementIds();
 

@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdWindows">
-      <HintPath>..\..\..\Program Files\Autodesk\Revit 2020\AdWindows.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2020\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore">
@@ -79,7 +79,7 @@
     <Compile Include="Ribbon\Image.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SelectionMonitorCore.addin" />
+    <None Include="SelectionMonitor.addin" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Ribbon\Images\AceOfSpades_16.png" />

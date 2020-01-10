@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnIdlingCommand.cs
-// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/10/2020 @ 10:24 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Commands
@@ -61,6 +61,8 @@ namespace SelectionMonitorCore.Commands
 			{
 				_monitorOnIdling.SelectionChanged -= SelectionChangedEvent;
 
+				App.UIContApp.Idling -= _monitorOnIdling.OnIdling;
+
 				_subscribed = false;
 			}
 			else
@@ -71,6 +73,8 @@ namespace SelectionMonitorCore.Commands
 				}
 
 				_monitorOnIdling.SelectionChanged += SelectionChangedEvent;
+
+				App.UIContApp.Idling += _monitorOnIdling.OnIdling;
 
 				_subscribed = true;
 				_subscribedCount++;
