@@ -45,8 +45,7 @@ namespace SelectionMonitorCore
 
 			EventFactory.StartUp();
 
-			var ribbon = new RibbonTab();
-			ribbon.Create();
+			var ribbonTab = new RibbonTab();
 
 			return Result.Succeeded;
 		}

@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ RibbonPushButtons.cs
-// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/10/2020 @ 11:02 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Ribbon
@@ -11,8 +11,6 @@ namespace SelectionMonitorCore.Ribbon
 	using System.Reflection;
 
 	using Autodesk.Revit.UI;
-
-	using SelectionMonitorCore.Utilities;
 
 	public static class RibbonPushButtons
 	{
@@ -27,12 +25,12 @@ namespace SelectionMonitorCore.Ribbon
 
 		#region Methods (SC)
 
-		public static PushButtonData MonitorOnIdlingCommand(string buttonName)
+		public static PushButtonData MonitorOnIdlingCommand(string ribbonAndPanelName)
 		{
-			var methodName  = CodeLocation.GetMethodName(1);
+			var methodName  = "MonitorOnIdlingCommand";
 			var buttonTitle = "Monitor On\nProject Idling";
 
-			return new PushButtonData(buttonName + methodName, buttonTitle, Path, "SelectionMonitorCore.Commands.MonitorOnIdlingCommand")
+			return new PushButtonData(ribbonAndPanelName + methodName, buttonTitle, Path, "SelectionMonitorCore.Commands.MonitorOnIdlingCommand")
 			       {
 				       LargeImage = Image.Get(ImagePath + "AceOfSpades_32.png"),
 				       Image      = Image.Get(ImagePath + "AceOfSpades_16.png")
@@ -40,12 +38,12 @@ namespace SelectionMonitorCore.Ribbon
 		}
 
 
-		public static PushButtonData MonitorOnPropertyChangedCommand(string buttonName)
+		public static PushButtonData MonitorOnPropertyChangedCommand(string ribbonAndPanelName)
 		{
-			var methodName  = CodeLocation.GetMethodName(1);
+			var methodName  = "MonitorOnPropertyChangedCommand";
 			var buttonTitle = "Monitor On\nProperty Change";
 
-			return new PushButtonData(buttonName + methodName, buttonTitle, Path, "SelectionMonitorCore.Commands.MonitorOnPropertyChangeCommand")
+			return new PushButtonData(ribbonAndPanelName + methodName, buttonTitle, Path, "SelectionMonitorCore.Commands.MonitorOnPropertyChangeCommand")
 			       {
 				       LargeImage = Image.Get(ImagePath + "AceOfSpades_32.png"),
 				       Image      = Image.Get(ImagePath + "AceOfSpades_16.png")

@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ RibbonTab.cs
-// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/10/2020 @ 10:32 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Ribbon
@@ -16,7 +16,8 @@ namespace SelectionMonitorCore.Ribbon
 		public RibbonTab()
 		{
 			RibbonPanelName = "Monitor";
-			RibbonTabName   = "Kelly Monitor";
+			RibbonTabName   = "Selection Monitor";
+			Create();
 		}
 
 		#endregion
@@ -39,20 +40,15 @@ namespace SelectionMonitorCore.Ribbon
 
 		#region Methods (SC)
 
-		public void Create()
+		private static void Create()
 		{
-			// Tab
 			App.UIContApp.CreateRibbonTab(RibbonTabName);
 
+			var panel = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelName);
 
-			// Panels
-			var ribbonPanelMonitor = App.UIContApp.CreateRibbonPanel(RibbonTabName, RibbonPanelName);
+			panel.AddItem(RibbonPushButtons.MonitorOnIdlingCommand(RibbonTabName + panel));
 
-
-			// Buttons
-			ribbonPanelMonitor.AddItem(RibbonPushButtons.MonitorOnIdlingCommand(RibbonTabName + ribbonPanelMonitor));
-
-			ribbonPanelMonitor.AddItem(RibbonPushButtons.MonitorOnPropertyChangedCommand(RibbonTabName + ribbonPanelMonitor));
+			panel.AddItem(RibbonPushButtons.MonitorOnPropertyChangedCommand(RibbonTabName + panel));
 		}
 
 		#endregion

@@ -2,18 +2,15 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ EventFactory.cs
-// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/10/2020 @ 10:41 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Events
 {
 
 	using System;
-	using System.Diagnostics;
 
 	using Autodesk.Revit.DB.Events;
-
-	using SelectionMonitorCore.Utilities;
 
 	internal static class EventFactory
 	{
@@ -22,8 +19,6 @@ namespace SelectionMonitorCore.Events
 
 		public static void ShutDown()
 		{
-			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
-
 			App.UIContApp.ControlledApplication.DocumentOpening -= DocumentEvents.OnOpening;
 			App.UIContApp.ControlledApplication.DocumentClosing -= DocumentEvents.OnClosing;
 		}
@@ -31,7 +26,6 @@ namespace SelectionMonitorCore.Events
 
 		public static void StartUp()
 		{
-			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
 			App.UIContApp.ControlledApplication.DocumentOpening += new EventHandler<DocumentOpeningEventArgs>(DocumentEvents.OnOpening);
 			App.UIContApp.ControlledApplication.DocumentClosing += new EventHandler<DocumentClosingEventArgs>(DocumentEvents.OnClosing);
 		}

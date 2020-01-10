@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnIdling.cs
-// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/10/2020 @ 10:55 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Events
@@ -14,8 +14,6 @@ namespace SelectionMonitorCore.Events
 
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI.Events;
-
-	using SelectionMonitorCore.Utilities;
 
 	internal class MonitorOnIdling
 	{
@@ -31,8 +29,6 @@ namespace SelectionMonitorCore.Events
 		public MonitorOnIdling()
 		{
 			Debug.WriteLine("SelectionWatcher - Constructor");
-
-			//////App.UIContApp.Idling += OnIdling;
 		}
 
 		#endregion
@@ -42,8 +38,6 @@ namespace SelectionMonitorCore.Events
 		~MonitorOnIdling()
 		{
 			Debug.WriteLine("SelectionWatcher - Destructor");
-
-			/////App.UIContApp.Idling -= OnIdling;
 		}
 
 		#endregion
@@ -66,60 +60,35 @@ namespace SelectionMonitorCore.Events
 
 		#region Methods (SC)
 
-		private void Call_SelectionChangedEvent()
+		public void OnIdlingEvent(object sender, IdlingEventArgs e)
 		{
-			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
+			ICollection<ElementId> latestSelection = App.UIApp.ActiveUIDocument.Selection.GetElementIds();
 
-			SelectionChanged?.Invoke(this, new EventArgs());
-		}
-
-
-		private void HandleSelectionChange(IEnumerable<ElementId> selectedElementIds)
-		{
-			Debug.WriteLine($"{CodeLocation.GetClassName(1)} - {CodeLocation.GetMethodName(1)}");
-
-			SelectedElementIds = new List<ElementId>();
-			_lastSelIds        = new List<int>();
-
-			foreach(var elementId in selectedElementIds)
-			{
-				SelectedElementIds.Add(elementId);
-				_lastSelIds.Add(elementId.IntegerValue);
-			}
-
-			Call_SelectionChangedEvent();
-		}
-
-
-		public void OnIdling(object sender, IdlingEventArgs e)
-		{
-			ICollection<ElementId> selected = App.UIApp.ActiveUIDocument.Selection.GetElementIds();
-
-			if(selected.Count == 0)
+			if(latestSelection.Count == 0)
 			{
 				if(SelectedElementIds != null && SelectedElementIds.Count > 0)
 
 				{
-					HandleSelectionChange(selected);
+					HandleSelectionChange(latestSelection);
 				}
 			}
 			else
 			{
 				if(SelectedElementIds == null)
 				{
-					HandleSelectionChange(selected);
+					HandleSelectionChange(latestSelection);
 				}
 				else
 				{
-					if(SelectedElementIds.Count != selected.Count)
+					if(SelectedElementIds.Count != latestSelection.Count)
 					{
-						HandleSelectionChange(selected);
+						HandleSelectionChange(latestSelection);
 					}
 					else
 					{
-						if(SelectionHasChanged(selected))
+						if(SelectionHasChanged(latestSelection))
 						{
-							HandleSelectionChange(selected);
+							HandleSelectionChange(latestSelection);
 						}
 					}
 				}
@@ -127,11 +96,32 @@ namespace SelectionMonitorCore.Events
 		}
 
 
-		private bool SelectionHasChanged(IEnumerable<ElementId> selectedElementIds)
+		private void HandleSelectionChange(IEnumerable<ElementId> elementIds)
+		{
+			SelectedElementIds = new List<ElementId>();
+			_lastSelIds        = new List<int>();
+
+			foreach(var elementId in elementIds)
+			{
+				SelectedElementIds.Add(elementId);
+				_lastSelIds.Add(elementId.IntegerValue);
+			}
+
+			InvokeSelectionChangedEvent();
+		}
+
+
+		private void InvokeSelectionChangedEvent()
+		{
+			SelectionChanged?.Invoke(this, new EventArgs());
+		}
+
+
+		private bool SelectionHasChanged(IEnumerable<ElementId> elementIds)
 		{
 			var i = 0;
 
-			foreach(var elementId in selectedElementIds)
+			foreach(var elementId in elementIds)
 			{
 				if(_lastSelIds[i] != elementId.IntegerValue)
 				{
