@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnPropertyChangeCommand.cs
-// Last Code Cleanup:... 01/10/2020 @ 1:00 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/10/2020 @ 2:20 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Commands
@@ -19,9 +19,6 @@ namespace SelectionMonitorCore.Commands
 	using Autodesk.Windows;
 
 	using SelectionMonitorCore.Utilities;
-
-	// Development Notes
-	// https://www.notion.so/SelectionChangedCommand-cs-90454dbb87a544b1a22ca914d14ae1cd
 
 	[Transaction(TransactionMode.ReadOnly)]
 	public class MonitorOnPropertyChangeCommand : IExternalCommand
@@ -81,8 +78,6 @@ namespace SelectionMonitorCore.Commands
 				return;
 			}
 
-
-			// Start
 			_elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
 			Messaging.DebugMessageString(_subscribed, _elementIds, "OnPropertyChanged");

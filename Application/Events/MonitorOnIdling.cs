@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnIdling.cs
-// Last Code Cleanup:... 01/10/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/10/2020 @ 2:19 PM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Events
@@ -10,7 +10,6 @@ namespace SelectionMonitorCore.Events
 
 	using System;
 	using System.Collections.Generic;
-	using System.Diagnostics;
 
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI.Events;
@@ -21,24 +20,6 @@ namespace SelectionMonitorCore.Events
 		#region Fields (SC)
 
 		private List<int> _lastSelIds;
-
-		#endregion
-
-		#region Constructors (SC)
-
-		public MonitorOnIdling()
-		{
-			Debug.WriteLine("SelectionWatcher - Constructor");
-		}
-
-		#endregion
-
-		#region Destructors (SC)
-
-		~MonitorOnIdling()
-		{
-			Debug.WriteLine("SelectionWatcher - Destructor");
-		}
 
 		#endregion
 

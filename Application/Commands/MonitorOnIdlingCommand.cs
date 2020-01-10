@@ -75,7 +75,6 @@ namespace SelectionMonitorCore.Commands
 			}
 
 
-			// Start
 			_elementIds = new List<ElementId>(_monitorOnIdling.SelectedElementIds);
 
 			Messaging.DebugMessageString(_subscribed, _elementIds, "OnIdling");
