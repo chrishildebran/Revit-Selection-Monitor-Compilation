@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorFairCommandEnabler.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/13/2020 @ 11:47 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Commands.Enablers
@@ -31,21 +31,22 @@ namespace SelectionMonitorCore.Commands.Enablers
 		{
 			var uidoc = uiApp.ActiveUIDocument;
 
+			// If no Document...
 			if(uidoc == null)
 			{
+				// Assert Button Is Disabled
 				return false;
 			}
 
-			List<ElementId> sel = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
-
 
 			// Raise the SelectionChangedEvent
-
-			_elementIds = new List<ElementId>(sel);
+			_elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
 			Messaging.DebugMessageString(true, _elementIds, "Fair Availability Class Name Workaround");
 
-			return false; // disable button
+
+			// Assert Button Is Disabled
+			return false;
 		}
 
 		#endregion
