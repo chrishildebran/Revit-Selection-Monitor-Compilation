@@ -66,14 +66,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Commands\Enablers\MonitorFairCommandEnabler.cs" />
+    <Compile Include="Commands\MonitorFairCommand.cs" />
     <Compile Include="Commands\MonitorOnIdlingCommand.cs" />
     <Compile Include="Commands\MonitorOnPropertyChangeCommand.cs" />
+    <Compile Include="Events\ApplicationEvents.cs" />
     <Compile Include="Events\EventFactory.cs" />
     <Compile Include="Events\MonitorOnIdling.cs" />
     <Compile Include="Events\DocumentEvents.cs" />
+    <Compile Include="Ribbon\UiUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ribbon\RibbonTab.cs" />
-    <Compile Include="Ribbon\RibbonPushButtons.cs" />
+    <Compile Include="Ribbon\UiTab.cs" />
+    <Compile Include="Ribbon\UiPushButtons.cs" />
     <Compile Include="Ribbon\Image.cs" />
     <Compile Include="Utilities\Messaging.cs" />
   </ItemGroup>

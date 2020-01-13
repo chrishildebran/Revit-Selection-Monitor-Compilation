@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ App.cs
-// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore
@@ -45,7 +45,7 @@ namespace SelectionMonitorCore
 
 			EventFactory.StartUp();
 
-			var ribbonTab = new RibbonTab();
+			var ribbonTab = new UiTab("Selection Monitor", "Monitor");
 
 			return Result.Succeeded;
 		}

@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ AssemblyInfo.cs
-// Last Code Cleanup:... 01/06/2020 @ 10:50 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 using System.Reflection;
@@ -32,4 +32,4 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly : AssemblyVersion("2020.1.2")]
+[assembly : AssemblyVersion("2020.1.13")]

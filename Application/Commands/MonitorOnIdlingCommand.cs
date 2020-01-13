@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnIdlingCommand.cs
-// Last Code Cleanup:... 01/10/2020 @ 1:22 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Commands
@@ -17,9 +17,6 @@ namespace SelectionMonitorCore.Commands
 
 	using SelectionMonitorCore.Events;
 	using SelectionMonitorCore.Utilities;
-
-	// Development Notes
-	// 
 
 	[Transaction(TransactionMode.ReadOnly)]
 	public class MonitorOnIdlingCommand : IExternalCommand
@@ -73,7 +70,6 @@ namespace SelectionMonitorCore.Commands
 			{
 				return;
 			}
-
 
 			_elementIds = new List<ElementId>(_monitorOnIdling.SelectedElementIds);
 

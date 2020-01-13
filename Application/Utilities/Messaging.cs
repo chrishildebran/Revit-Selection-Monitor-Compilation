@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ Messaging.cs
-// Last Code Cleanup:... 01/10/2020 @ 1:22 PM Using ReSharper ✓
+// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 // Development Notes
 namespace SelectionMonitorCore.Utilities
