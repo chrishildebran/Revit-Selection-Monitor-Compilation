@@ -2,9 +2,8 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ DocumentEvents.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
 namespace SelectionMonitorCore.Events
 {
 

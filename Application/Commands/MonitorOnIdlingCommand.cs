@@ -2,9 +2,8 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnIdlingCommand.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
 namespace SelectionMonitorCore.Commands
 {
 
@@ -22,9 +21,7 @@ namespace SelectionMonitorCore.Commands
 	public class MonitorOnIdlingCommand : IExternalCommand
 	{
 
-		#region Fields (SC)
-
-		private static List<ElementId> _elementIds;
+		#region Fields
 
 		private static MonitorOnIdling _monitorOnIdling;
 
@@ -71,9 +68,9 @@ namespace SelectionMonitorCore.Commands
 				return;
 			}
 
-			_elementIds = new List<ElementId>(_monitorOnIdling.SelectedElementIds);
+			List<ElementId> elementIds = new List<ElementId>(_monitorOnIdling.SelectedElementIds);
 
-			Messaging.DebugMessageString(_subscribed, _elementIds, "OnIdling");
+			Messaging.DebugMessage(_subscribed, elementIds, "Ken Goulding's - OnIdling", true);
 		}
 
 		#endregion

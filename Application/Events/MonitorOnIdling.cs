@@ -2,9 +2,8 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnIdling.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
 namespace SelectionMonitorCore.Events
 {
 
@@ -17,19 +16,19 @@ namespace SelectionMonitorCore.Events
 	internal class MonitorOnIdling
 	{
 
-		#region Fields (SC)
+		#region Fields
 
 		private List<int> _lastSelIds;
 
 		#endregion
 
-		#region  Events (SC)
+		#region  Events
 
 		public event EventHandler SelectionChanged;
 
 		#endregion
 
-		#region Properties (SC)
+		#region Properties
 
 		public List<ElementId> SelectedElementIds
 		{

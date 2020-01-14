@@ -2,9 +2,8 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorOnPropertyChangeCommand.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
 namespace SelectionMonitorCore.Commands
 {
 
@@ -24,9 +23,7 @@ namespace SelectionMonitorCore.Commands
 	public class MonitorOnPropertyChangeCommand : IExternalCommand
 	{
 
-		#region Fields (SC)
-
-		private static List<ElementId> _elementIds;
+		#region Fields
 
 		private static bool _subscribed;
 
@@ -68,7 +65,7 @@ namespace SelectionMonitorCore.Commands
 		{
 			if(!(sender is RibbonTab))
 			{
-				Messaging.TypeError();
+				Messaging.DebugMessage("Expected Sender To Be A Ribbon Tab");
 
 				return;
 			}
@@ -78,9 +75,9 @@ namespace SelectionMonitorCore.Commands
 				return;
 			}
 
-			_elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
+			List<ElementId> elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
-			Messaging.DebugMessageString(_subscribed, _elementIds, "OnPropertyChanged");
+			Messaging.DebugMessage(_subscribed, elementIds, "Vilo's - OnPropertyChanged", true);
 		}
 
 		#endregion

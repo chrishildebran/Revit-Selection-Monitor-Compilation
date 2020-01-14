@@ -2,9 +2,8 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ MonitorFairCommandEnabler.cs
-// Last Code Cleanup:... 01/13/2020 @ 11:47 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
 namespace SelectionMonitorCore.Commands.Enablers
 {
 
@@ -19,17 +18,12 @@ namespace SelectionMonitorCore.Commands.Enablers
 	public class MonitorFairCommandEnabler : IExternalCommandAvailability
 	{
 
-		#region Fields (SC)
-
-		private static List<ElementId> _elementIds;
-
-		#endregion
-
 		#region Methods (SC)
 
 		public bool IsCommandAvailable(UIApplication uiApp, CategorySet catSet)
 		{
 			var uidoc = uiApp.ActiveUIDocument;
+
 
 			// If no Document...
 			if(uidoc == null)
@@ -40,9 +34,9 @@ namespace SelectionMonitorCore.Commands.Enablers
 
 
 			// Raise the SelectionChangedEvent
-			_elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
+			List<ElementId> elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
-			Messaging.DebugMessageString(true, _elementIds, "Fair Availability Class Name Workaround");
+			Messaging.DebugMessage(true, elementIds, "Fair59 - Availability Class Name Workaround", true);
 
 
 			// Assert Button Is Disabled

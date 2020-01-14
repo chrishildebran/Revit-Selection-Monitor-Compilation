@@ -2,9 +2,8 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ App.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
 namespace SelectionMonitorCore
 {
 
@@ -14,13 +13,13 @@ namespace SelectionMonitorCore
 	using Autodesk.Revit.UI;
 
 	using SelectionMonitorCore.Events;
-	using SelectionMonitorCore.Ribbon;
+	using SelectionMonitorCore.UI;
 
 	[Transaction(TransactionMode.Manual)]
 	internal class App : IExternalApplication
 	{
 
-		#region Fields (SC)
+		#region Fields
 
 		public static UIApplication UIApp;
 
@@ -45,7 +44,7 @@ namespace SelectionMonitorCore
 
 			EventFactory.StartUp();
 
-			var ribbonTab = new UiTab("Selection Monitor", "Monitor");
+			var ribbonTab = new Ribbon("Selection Monitor", "Monitor");
 
 			return Result.Succeeded;
 		}

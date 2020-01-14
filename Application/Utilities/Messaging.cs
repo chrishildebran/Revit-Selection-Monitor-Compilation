@@ -2,18 +2,17 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ Messaging.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
 namespace SelectionMonitorCore.Utilities
 {
 
 	using System.Collections.Generic;
 	using System.Diagnostics;
+	using System.Linq;
 	using System.Text;
 
 	using Autodesk.Revit.DB;
-	using Autodesk.Revit.UI;
 
 	public class Messaging
 	{
@@ -30,7 +29,7 @@ namespace SelectionMonitorCore.Utilities
 		}
 
 
-		public static void DebugMessageString(bool subscribed, List<ElementId> elementIds, string sender)
+		public static void DebugMessage(bool subscribed, List<ElementId> elementIds, string sender, bool showElementIds)
 		{
 			var sb = new StringBuilder();
 			var sw = new Stopwatch();
@@ -47,10 +46,7 @@ namespace SelectionMonitorCore.Utilities
 			}
 			else if(elementIds.Count >= 1)
 			{
-				elementIdsForMessage = "<hidden>";
-
-
-				//elementIdsForMessage = string.Join(", ", elementIds.Select(id => id.IntegerValue + " [" + eidCount++ + "]"));
+				elementIdsForMessage = showElementIds ? string.Join(", ", elementIds.Select(id => id.IntegerValue + " [" + eidCount++ + "]")) : "<hidden>";
 			}
 
 			sb.AppendLine($"Selection Monitor - {sender}\n");
@@ -67,17 +63,6 @@ namespace SelectionMonitorCore.Utilities
 			sb.AppendLine("Elapsed Time: " + sw.Elapsed.TotalMilliseconds);
 
 			DebugMessage(sb.ToString());
-		}
-
-
-		public static void TypeError()
-		{
-			var sb1 = new StringBuilder();
-			sb1.AppendLine("????????????????????????????????????????");
-			sb1.AppendLine("?? Expected Sender To Be A Ribbon Tab ??");
-			sb1.AppendLine("????????????????????????????????????????");
-
-			TaskDialog.Show("Error", sb1.ToString());
 		}
 
 		#endregion

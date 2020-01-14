@@ -74,26 +74,21 @@
     <Compile Include="Events\EventFactory.cs" />
     <Compile Include="Events\MonitorOnIdling.cs" />
     <Compile Include="Events\DocumentEvents.cs" />
-    <Compile Include="Ribbon\UiUtilities.cs" />
+    <Compile Include="UI\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ribbon\UiTab.cs" />
-    <Compile Include="Ribbon\UiPushButtons.cs" />
-    <Compile Include="Ribbon\Image.cs" />
+    <Compile Include="UI\Ribbon.cs" />
     <Compile Include="Utilities\Messaging.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SelectionMonitor.addin" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Ribbon\Images\AceOfSpades_16.png" />
-    <EmbeddedResource Include="Ribbon\Images\AceOfSpades_24.png" />
-    <EmbeddedResource Include="Ribbon\Images\AceOfSpades_Orig.png" />
-    <EmbeddedResource Include="Ribbon\Images\AceOfSpades_32.png" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="UI\Images\startstop_16.png" />
+    <EmbeddedResource Include="UI\Images\startstop_32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <PropertyGroup>
     <PostBuildEvent>if exist "C:\ProgramData\Autodesk\Revit\Addins\2020" copy "$(ProjectDir)*.addin" "C:\ProgramData\Autodesk\Revit\Addins\2020"

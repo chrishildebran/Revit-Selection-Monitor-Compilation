@@ -899,7 +899,7 @@
 &lt;Patterns xmlns="urn:schemas-jetbrains-com:member-reordering-patterns"&gt;&#xD;
   &lt;TypePattern DisplayName="Kelly Tools Layout" Priority="150" RemoveRegions="AllExceptGenerated"&gt;&#xD;
     &lt;Group DisplayName="Fields Group"&gt;&#xD;
-      &lt;Region Name="Constants (SC)                        "&gt;&#xD;
+      &lt;Region Name="Constants                        "&gt;&#xD;
         &lt;Entry DisplayName="Public Constants"&gt;&#xD;
           &lt;Entry.Match&gt;&#xD;
             &lt;And&gt;&#xD;
@@ -958,7 +958,7 @@
       &lt;/Region&gt;&#xD;
     &lt;/Group&gt;&#xD;
     &lt;Group DisplayName="Fields Group"&gt;&#xD;
-      &lt;Region Name="Fields (SC)"&gt;&#xD;
+      &lt;Region Name="Fields"&gt;&#xD;
         &lt;Entry DisplayName="Public Fields"&gt;&#xD;
           &lt;Entry.Match&gt;&#xD;
             &lt;And&gt;&#xD;
@@ -1017,7 +1017,7 @@
       &lt;/Region&gt;&#xD;
     &lt;/Group&gt;&#xD;
     &lt;Group DisplayName="Constructors"&gt;&#xD;
-      &lt;Region Name="Constructors (SC)"&gt;&#xD;
+      &lt;Region Name="Constructors"&gt;&#xD;
         &lt;Entry DisplayName="Public Constructors"&gt;&#xD;
           &lt;Entry.Match&gt;&#xD;
             &lt;And&gt;&#xD;
@@ -1080,14 +1080,14 @@
         &lt;/Entry&gt;&#xD;
       &lt;/Region&gt;&#xD;
     &lt;/Group&gt;&#xD;
-    &lt;Region Name="Destructors (SC)"&gt;&#xD;
+    &lt;Region Name="Destructors"&gt;&#xD;
       &lt;Entry DisplayName="Destructors"&gt;&#xD;
         &lt;Entry.Match&gt;&#xD;
           &lt;Kind Is="Destructor" /&gt;&#xD;
         &lt;/Entry.Match&gt;&#xD;
       &lt;/Entry&gt;&#xD;
     &lt;/Region&gt;&#xD;
-    &lt;Region Name="Delegates (SC)"&gt;&#xD;
+    &lt;Region Name="Delegates"&gt;&#xD;
       &lt;Entry DisplayName="Delegates" Priority="100"&gt;&#xD;
         &lt;Entry.Match&gt;&#xD;
           &lt;Kind Is="Delegate" /&gt;&#xD;
@@ -1097,14 +1097,14 @@
         &lt;/Entry.SortBy&gt;&#xD;
       &lt;/Entry&gt;&#xD;
     &lt;/Region&gt;&#xD;
-    &lt;Region Name=" Events (SC)"&gt;&#xD;
+    &lt;Region Name=" Events"&gt;&#xD;
       &lt;Entry DisplayName="Events"&gt;&#xD;
         &lt;Entry.Match&gt;&#xD;
           &lt;Kind Is="Event" /&gt;&#xD;
         &lt;/Entry.Match&gt;&#xD;
       &lt;/Entry&gt;&#xD;
     &lt;/Region&gt;&#xD;
-    &lt;Region Name="Enumerations (SC)"&gt;&#xD;
+    &lt;Region Name="Enumerations"&gt;&#xD;
       &lt;Entry DisplayName="Enums" Priority="100"&gt;&#xD;
         &lt;Entry.Match&gt;&#xD;
           &lt;Kind Is="Enum" /&gt;&#xD;
@@ -1114,7 +1114,7 @@
         &lt;/Entry.SortBy&gt;&#xD;
       &lt;/Entry&gt;&#xD;
     &lt;/Region&gt;&#xD;
-    &lt;Region Name="Interfaces (SC)"&gt;&#xD;
+    &lt;Region Name="Interfaces"&gt;&#xD;
       &lt;Entry DisplayName="Interface"&gt;&#xD;
         &lt;Entry.Match&gt;&#xD;
           &lt;Kind Is="Interface" /&gt;&#xD;
@@ -1125,7 +1125,7 @@
       &lt;/Entry&gt;&#xD;
     &lt;/Region&gt;&#xD;
     &lt;Group DisplayName="Properties"&gt;&#xD;
-      &lt;Region Name="Properties (SC)"&gt;&#xD;
+      &lt;Region Name="Properties"&gt;&#xD;
         &lt;Entry DisplayName="Public Property"&gt;&#xD;
           &lt;Entry.Match&gt;&#xD;
             &lt;And&gt;&#xD;
@@ -1191,7 +1191,7 @@
         &lt;/Entry&gt;&#xD;
       &lt;/Region&gt;&#xD;
     &lt;/Group&gt;&#xD;
-    &lt;Region Name="Indexers (SC)"&gt;&#xD;
+    &lt;Region Name="Indexers"&gt;&#xD;
       &lt;Entry DisplayName="Indexers"&gt;&#xD;
         &lt;Entry.Match&gt;&#xD;
           &lt;Kind Is="Indexer" /&gt;&#xD;
@@ -1373,21 +1373,12 @@
 	<s:Boolean x:Key="/Default/CodeStyle/EncapsulateField/MakeFieldPrivate/@EntryValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeStyle/EncapsulateField/UpdateExternalUsagesOnly/@EntryValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeStyle/EncapsulateField/UseAutoProperty/@EntryValue">False</s:Boolean>
-	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////&#xD;
-Company:............. J.H. Kelly&#xD;
-Department:.......... Virtual Design and Construction (VDC)&#xD;
-Website:............. http://www.jhkelly.com&#xD;
+	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">/////////////////////////////////////////////////////////////&#xD;
 Solution:............ $SOLUTION$&#xD;
 Project:............. $PROJECT$&#xD;
 File:................ $FILENAME$&#xD;
 Last Code Cleanup:... $CURRENT_MONTH$/$CURRENT_DAY$/$CURRENT_YEAR$ @ $CURRENT_TIME$ Using ReSharper ✓&#xD;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////&#xD;
-C#.Net Guide:........ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/&#xD;
-Revit 2020 API:...... https://www.revitapidocs.com/2020/&#xD;
-Solid Principle:..... https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design&#xD;
-Golden Rules:........ https://www.codeproject.com/Articles/768052/Golden-Rules-Of-Good-OOP&#xD;
-Member Order:........ https://stackoverflow.com/questions/150479/order-of-items-in-classes-fields-properties-constructors-methods&#xD;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</s:String>
+/////////////////////////////////////////////////////////////</s:String>
 	<s:Boolean x:Key="/Default/CodeStyle/Naming/CSharpAutoNaming/IsNotificationDisabled/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=UI/@EntryIndexedValue">UI</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=LocalFunctions/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;</s:String>
@@ -1445,6 +1436,7 @@ Member Order:........ https://stackoverflow.com/questions/150479/order-of-items-
   &lt;Assembly Path="C:\TFS\KTR Dev1\lib\RCWPF\2019.1.325.45\Telerik.Windows.Controls.Input.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\TFS\KTR Dev1\lib\RCWPF\2019.1.325.45\Telerik.Windows.Controls.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\TFS\KTR Dev1\packages\CsvHelper.12.1.2\lib\net45\CsvHelper.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\DevGit\Josh-Lumley-5-Secrets-Video-Follow\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:Boolean x:Key="/Default/Environment/ExternalSources/FirstTimeFormShown/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/ExternalSources/NavigationMode/@EntryValue">ObjectBrowser</s:String>
@@ -1455,7 +1447,7 @@ Member Order:........ https://stackoverflow.com/questions/150479/order-of-items-
 	<s:Boolean x:Key="/Default/Environment/GenerateMru/GroupByType/=PatternMatching/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/SolBuilderDuo/UseMsbuildSolutionBuilder/@EntryValue">NewVersion</s:String>
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/SolutionBuilderNext/AlwaysBuildProjects/@EntryValue">f8897c94-c97f-4874-94b9-0072dd05ac79;981023ca-cf63-41a8-b449-e07c7d7e1fd0</s:String>
-	<s:Int64 x:Key="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue">5</s:Int64>
+	<s:Int64 x:Key="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue">13</s:Int64>
 	<s:String x:Key="/Default/Environment/Hierarchy/PsiConfigurationSettingsKey/CustomLocation/@EntryValue">C:\Users\CHildebran\AppData\Local\JetBrains\Transient\ReSharperPlatformVs15\v11_c37dfcb7\SolutionCaches</s:String>
 	<s:Boolean x:Key="/Default/Environment/Hierarchy/TeamCityVsAddinHierarchy/Tfs/Enabled/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/OpenDocument/OpenDocumentAfterModification/@EntryValue">True</s:Boolean>
@@ -1502,7 +1494,7 @@ Member Order:........ https://stackoverflow.com/questions/150479/order-of-items-
 	<s:Boolean x:Key="/Default/Environment/TextControl/HighlightCurrentLine/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/TreeGridPresentableViewSearchBox/AutoHide/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/TreeGridPresentableViewSearchBox/WasNoticeShown/@EntryValue">True</s:Boolean>
-	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">12/03/2019 07:29:35</s:String>
+	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">01/03/2020 06:34:03</s:String>
 	<s:Int64 x:Key="/Default/Environment/UserInterface/Diagram/GroupingIndex/@EntryValue">2</s:Int64>
 	<s:Int64 x:Key="/Default/Environment/UserInterface/InspectionResultView/GroupingIndex/@EntryValue">3</s:Int64>
 	<s:String x:Key="/Default/Environment/UserInterface/ShortcutSchemeName/@EntryValue">VS</s:String>
@@ -1533,15 +1525,15 @@ Member Order:........ https://stackoverflow.com/questions/150479/order-of-items-
 	<s:Boolean x:Key="/Default/Housekeeping/IntellisenseHousekeeping/HintUsed/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/OpenFromGacDialog/Position/@EntryValue">[392,315](1085,964)</s:String>
 	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/OpenFromNuGetPackagesCacheDialog/Position/@EntryValue">[498,230](1296,795)</s:String>
-	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/OptionsDialogView/Position/@EntryValue">[473,-26](2065,1906)</s:String>
+	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/OptionsDialogView/Position/@EntryValue">[248,-159](2065,1475)</s:String>
 	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/OwnedDialogPosition/Position/=RegularExpressionEditorWindow/@EntryIndexedValue">[83,-36](1488,781)</s:String>
-	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/RefactoringWizardWindow/Location/@EntryValue">-298,-520</s:String>
+	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/RefactoringWizardWindow/Location/@EntryValue">393,-274</s:String>
 	<s:Double x:Key="/Default/Housekeeping/Layout/DialogWindows/RegularExpressionEditorWindow/InputColumnWidth/@EntryValue">947.33333333333326</s:Double>
 	<s:Double x:Key="/Default/Housekeeping/Layout/DialogWindows/RegularExpressionEditorWindow/InputRowHeight/@EntryValue">479.25</s:Double>
 	<s:Double x:Key="/Default/Housekeeping/Layout/DialogWindows/RegularExpressionEditorWindow/MatchColumnWidth/@EntryValue">473.66666666666674</s:Double>
 	<s:Double x:Key="/Default/Housekeeping/Layout/DialogWindows/RegularExpressionEditorWindow/PatternRowHeight/@EntryValue">159.75</s:Double>
 	<s:Boolean x:Key="/Default/Housekeeping/LiveTemplatesHousekeeping/HotspotSessionHintIsShown/@EntryValue">True</s:Boolean>
-	<s:String x:Key="/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue">FileHeaderTextPage</s:String>
+	<s:String x:Key="/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue">CsharpFileLayout</s:String>
 	<s:Boolean x:Key="/Default/Housekeeping/RefactoringsMru/RenameRefactoring/DoSearchForTextInStrings/@EntryValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/Housekeeping/RefactoringsMru/UseInline/@EntryValue">False</s:Boolean>
 	<s:Double x:Key="/Default/Housekeeping/TreeModelBrowserPanelPersistence/PreviewSplitterVerticalProportion/=UnitTestSessionDescriptor/@EntryIndexedValue">1</s:Double>

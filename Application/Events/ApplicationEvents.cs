@@ -2,16 +2,15 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ ApplicationEvents.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
 namespace SelectionMonitorCore.Events
 {
 
 	using Autodesk.Revit.DB.Events;
 	using Autodesk.Windows;
 
-	using SelectionMonitorCore.Ribbon;
+	using SelectionMonitorCore.UI;
 	using SelectionMonitorCore.Utilities;
 
 	internal static class ApplicationEvents
@@ -27,7 +26,7 @@ namespace SelectionMonitorCore.Events
 
 			foreach(var tab in ComponentManager.Ribbon.Tabs)
 			{
-				if(tab.Id == UiTab.RibbonTabName)
+				if(tab.Id == Ribbon.RibbonTabName)
 				{
 					fairTab = tab;
 
@@ -61,13 +60,13 @@ namespace SelectionMonitorCore.Events
 
 			if(fairPanel != null && fairButton != null)
 			{
-				var position = UiUtilities.GetPositionBeforeButton("ID_REVIT_FILE_PRINT");
+				var position = Utilities.GetPositionBeforeButton("ID_REVIT_FILE_PRINT");
 
-				UiUtilities.PlaceButtonOnQuickAccess(position, fairButton);
+				Utilities.PlaceButtonOnQuickAccess(position, fairButton);
 
-				UiUtilities.RemovePanelFromTab(fairTab, fairPanel);
+				Utilities.RemovePanelFromTab(fairTab, fairPanel);
 
-				UiUtilities.RemoveTabFromRibbon(fairTab);
+				Utilities.RemoveTabFromRibbon(fairTab);
 			}
 		}
 

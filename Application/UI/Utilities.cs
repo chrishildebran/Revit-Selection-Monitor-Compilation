@@ -1,19 +1,36 @@
 ﻿// /////////////////////////////////////////////////////////////
 // Solution:............ SelectionMonitor
 // Project:............. Core
-// File:................ UiUtilities.cs
-// Last Code Cleanup:... 01/13/2020 @ 10:55 AM Using ReSharper ✓
+// File:................ Utilities.cs
+// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-// Development Notes
-namespace SelectionMonitorCore.Ribbon
+namespace SelectionMonitorCore.UI
 {
+
+	using System.Reflection;
+	using System.Windows.Media.Imaging;
 
 	using Autodesk.Windows;
 
-	internal static class UiUtilities
+	internal static class Utilities
 	{
 
 		#region Methods (SC)
+
+		public static BitmapSource GetBitmapFrame(string name)
+		{
+			try
+			{
+				var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
+
+				return BitmapFrame.Create(stream);
+			}
+			catch
+			{
+				return null;
+			}
+		}
+
 
 		public static int GetPositionBeforeButton(string s)
 		{
