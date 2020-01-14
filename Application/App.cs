@@ -12,8 +12,8 @@ namespace SelectionMonitorCore
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.UI;
 
-	using SelectionMonitorCore.Events;
 	using SelectionMonitorCore.UI;
+	using SelectionMonitorCore.Utilities;
 
 	[Transaction(TransactionMode.Manual)]
 	internal class App : IExternalApplication

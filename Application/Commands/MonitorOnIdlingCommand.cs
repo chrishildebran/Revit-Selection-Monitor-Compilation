@@ -14,7 +14,6 @@ namespace SelectionMonitorCore.Commands
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using SelectionMonitorCore.Events;
 	using SelectionMonitorCore.Utilities;
 
 	[Transaction(TransactionMode.ReadOnly)]

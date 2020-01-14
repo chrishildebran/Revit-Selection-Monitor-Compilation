@@ -2,9 +2,9 @@
 // Solution:............ SelectionMonitor
 // Project:............. Core
 // File:................ EventFactory.cs
-// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/14/2020 @ 7:39 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore.Events
+namespace SelectionMonitorCore.Utilities
 {
 
 	using System;
@@ -19,16 +19,12 @@ namespace SelectionMonitorCore.Events
 		public static void ShutDown()
 		{
 			App.UIContApp.ControlledApplication.ApplicationInitialized -= ApplicationEvents.FairApplicationInitialized;
-			App.UIContApp.ControlledApplication.DocumentOpening        -= DocumentEvents.OnOpening;
-			App.UIContApp.ControlledApplication.DocumentClosing        -= DocumentEvents.OnClosing;
 		}
 
 
 		public static void StartUp()
 		{
 			App.UIContApp.ControlledApplication.ApplicationInitialized += new EventHandler<ApplicationInitializedEventArgs>(ApplicationEvents.FairApplicationInitialized);
-			App.UIContApp.ControlledApplication.DocumentOpening        += new EventHandler<DocumentOpeningEventArgs>(DocumentEvents.OnOpening);
-			App.UIContApp.ControlledApplication.DocumentClosing        += new EventHandler<DocumentClosingEventArgs>(DocumentEvents.OnClosing);
 		}
 
 		#endregion

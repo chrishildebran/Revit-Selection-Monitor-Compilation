@@ -4,14 +4,13 @@
 // File:................ ApplicationEvents.cs
 // Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore.Events
+namespace SelectionMonitorCore.Utilities
 {
 
 	using Autodesk.Revit.DB.Events;
 	using Autodesk.Windows;
 
 	using SelectionMonitorCore.UI;
-	using SelectionMonitorCore.Utilities;
 
 	internal static class ApplicationEvents
 	{
