@@ -4,7 +4,7 @@
 // File:................ MonitorFairCommandEnabler.cs
 // Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore.Commands.Enablers
+namespace SelectionMonitorCompilationCore.Commands.Enablers
 {
 
 	using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace SelectionMonitorCore.Commands.Enablers
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using SelectionMonitorCore.Utilities;
+	using SelectionMonitorCompilationCore.Utilities;
 
 	public class MonitorFairCommandEnabler : IExternalCommandAvailability
 	{
@@ -34,7 +34,7 @@ namespace SelectionMonitorCore.Commands.Enablers
 
 
 			// Raise the SelectionChangedEvent
-			List<ElementId> elementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
+			App.SelectedElementIds = App.UIApp.ActiveUIDocument.Selection.GetElementIds().OrderBy(elementId => elementId.IntegerValue).ToList();
 
 			Messaging.DebugMessage(true, elementIds, "Fair59 - Availability Class Name Workaround", true);
 

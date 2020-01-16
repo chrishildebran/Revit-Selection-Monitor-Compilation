@@ -4,7 +4,7 @@
 // File:................ EventFactory.cs
 // Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore.Events
+namespace SelectionMonitorCompilationCore.Events
 {
 
 	using System;

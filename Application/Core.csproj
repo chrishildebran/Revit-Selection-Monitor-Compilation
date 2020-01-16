@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>SelectionMonitorCore</RootNamespace>
+    <RootNamespace>SelectionMonitorCompilationCore</RootNamespace>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -29,7 +29,7 @@
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>SelectionMonitorCore</AssemblyName>
+    <AssemblyName>SelectionMonitorCompilationCore</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <OutputPath>bin\Debug\</OutputPath>
@@ -80,7 +80,7 @@
     <Compile Include="Utilities\Messaging.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SelectionMonitor.addin" />
+    <None Include="SelectionMonitorCompilation.addin" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -92,9 +92,9 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <PropertyGroup>
     <PostBuildEvent>if exist "C:\ProgramData\Autodesk\Revit\Addins\2020" copy "$(ProjectDir)*.addin" "C:\ProgramData\Autodesk\Revit\Addins\2020"
-if exist "C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore" copy "$(ProjectDir)$(OutputPath)*.dll" "C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore"</PostBuildEvent>
+if exist "C:\ProgramData\Autodesk\Revit\Addins\2020\$(SolutionName)" copy "$(ProjectDir)$(OutputPath)*.dll" "C:\ProgramData\Autodesk\Revit\Addins\2020\$(SolutionName)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>if not exist "C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore" mkdir "C:\ProgramData\Autodesk\Revit\Addins\2020\SelectionMonitorCore"</PreBuildEvent>
+    <PreBuildEvent>if not exist "C:\ProgramData\Autodesk\Revit\Addins\2020\$(SolutionName)" mkdir "C:\ProgramData\Autodesk\Revit\Addins\2020\$(SolutionName)"</PreBuildEvent>
   </PropertyGroup>
 </Project>

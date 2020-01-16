@@ -1,7 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeStyle/CSharpFileLayoutPatterns/Pattern/@EntryValue">&lt;?xml version="1.0" encoding="utf-16"?&gt;&#xD;
 &lt;Patterns xmlns="urn:schemas-jetbrains-com:member-reordering-patterns"&gt;&#xD;
-  &lt;TypePattern DisplayName="Kelly Tools Layout" Priority="150" RemoveRegions="AllExceptGenerated"&gt;&#xD;
+  &lt;TypePattern Priority="150" DisplayName="Kelly Tools Layout" RemoveRegions="AllExceptGenerated"&gt;&#xD;
     &lt;Group DisplayName="Fields Group"&gt;&#xD;
       &lt;Region Name="Constants                        "&gt;&#xD;
         &lt;Entry DisplayName="Public Constants"&gt;&#xD;
@@ -192,7 +192,7 @@
       &lt;/Entry&gt;&#xD;
     &lt;/Region&gt;&#xD;
     &lt;Region Name="Delegates"&gt;&#xD;
-      &lt;Entry DisplayName="Delegates" Priority="100"&gt;&#xD;
+      &lt;Entry Priority="100" DisplayName="Delegates"&gt;&#xD;
         &lt;Entry.Match&gt;&#xD;
           &lt;Kind Is="Delegate" /&gt;&#xD;
         &lt;/Entry.Match&gt;&#xD;
@@ -209,7 +209,7 @@
       &lt;/Entry&gt;&#xD;
     &lt;/Region&gt;&#xD;
     &lt;Region Name="Enumerations"&gt;&#xD;
-      &lt;Entry DisplayName="Enums" Priority="100"&gt;&#xD;
+      &lt;Entry Priority="100" DisplayName="Enums"&gt;&#xD;
         &lt;Entry.Match&gt;&#xD;
           &lt;Kind Is="Enum" /&gt;&#xD;
         &lt;/Entry.Match&gt;&#xD;
@@ -422,7 +422,7 @@
       &lt;/Entry.SortBy&gt;&#xD;
     &lt;/Entry&gt;&#xD;
     &lt;Entry DisplayName="All other members" /&gt;&#xD;
-    &lt;Entry DisplayName="Test Methods" Priority="100"&gt;&#xD;
+    &lt;Entry Priority="100" DisplayName="Test Methods"&gt;&#xD;
       &lt;Entry.Match&gt;&#xD;
         &lt;And&gt;&#xD;
           &lt;Kind Is="Method" /&gt;&#xD;
@@ -455,7 +455,7 @@
       &lt;/Entry.Match&gt;&#xD;
     &lt;/Entry&gt;&#xD;
     &lt;Entry DisplayName="All other members" /&gt;&#xD;
-    &lt;Entry DisplayName="Test Methods" Priority="100"&gt;&#xD;
+    &lt;Entry Priority="100" DisplayName="Test Methods"&gt;&#xD;
       &lt;Entry.Match&gt;&#xD;
         &lt;And&gt;&#xD;
           &lt;Kind Is="Method" /&gt;&#xD;
@@ -483,6 +483,6 @@ Last Code Cleanup:... $CURRENT_MONTH$/$CURRENT_DAY$/$CURRENT_YEAR$ @ $CURRENT_TI
 	<s:Int64 x:Key="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue">13</s:Int64>
 	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">01/03/2020 06:34:03</s:String>
 	<s:Boolean x:Key="/Default/Environment/OpenDocument/OpenDocumentAfterModification/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ESettingsUpgrade_002EAlwaysTreatStructAsNotReorderableMigration/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/OptionsDialogView/Position/@EntryValue">[248,-159](2065,1475)</s:String>
-	
 	<s:String x:Key="/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue">CsharpFileLayout</s:String></wpf:ResourceDictionary>

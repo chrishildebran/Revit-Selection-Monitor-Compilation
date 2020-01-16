@@ -4,7 +4,7 @@
 // File:................ MonitorOnIdlingCommand.cs
 // Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore.Commands
+namespace SelectionMonitorCompilationCore.Commands
 {
 
 	using System;
@@ -14,8 +14,8 @@ namespace SelectionMonitorCore.Commands
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using SelectionMonitorCore.Events;
-	using SelectionMonitorCore.Utilities;
+	using SelectionMonitorCompilationCore.Events;
+	using SelectionMonitorCompilationCore.Utilities;
 
 	[Transaction(TransactionMode.ReadOnly)]
 	public class MonitorOnIdlingCommand : IExternalCommand

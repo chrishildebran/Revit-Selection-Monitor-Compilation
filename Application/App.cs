@@ -1,19 +1,21 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ SelectionMonitor
+// Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ App.cs
-// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/16/2020 @ 8:47 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore
+namespace SelectionMonitorCompilationCore
 {
 
+	using System.Collections.Generic;
 	using System.Reflection;
 
 	using Autodesk.Revit.Attributes;
+	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using SelectionMonitorCore.Events;
-	using SelectionMonitorCore.UI;
+	using SelectionMonitorCompilationCore.Events;
+	using SelectionMonitorCompilationCore.UI;
 
 	[Transaction(TransactionMode.Manual)]
 	internal class App : IExternalApplication
@@ -24,6 +26,16 @@ namespace SelectionMonitorCore
 		public static UIApplication UIApp;
 
 		public static UIControlledApplication UIContApp;
+
+		#endregion
+
+		#region Properties
+
+		public static List<ElementId> SelectedElementIds
+		{
+			get;
+			set;
+		}
 
 		#endregion
 

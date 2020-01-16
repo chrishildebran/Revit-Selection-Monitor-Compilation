@@ -4,7 +4,7 @@
 // File:................ MonitorOnPropertyChangeCommand.cs
 // Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore.Commands
+namespace SelectionMonitorCompilationCore.Commands
 {
 
 	using System;
@@ -17,7 +17,7 @@ namespace SelectionMonitorCore.Commands
 	using Autodesk.Revit.UI;
 	using Autodesk.Windows;
 
-	using SelectionMonitorCore.Utilities;
+	using SelectionMonitorCompilationCore.Utilities;
 
 	[Transaction(TransactionMode.ReadOnly)]
 	public class MonitorOnPropertyChangeCommand : IExternalCommand

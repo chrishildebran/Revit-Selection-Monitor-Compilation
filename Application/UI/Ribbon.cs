@@ -4,7 +4,7 @@
 // File:................ Ribbon.cs
 // Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore.UI
+namespace SelectionMonitorCompilationCore.UI
 {
 
 	using System.Reflection;

@@ -4,7 +4,7 @@
 // File:................ Messaging.cs
 // Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCore.Utilities
+namespace SelectionMonitorCompilationCore.Utilities
 {
 
 	using System.Collections.Generic;
