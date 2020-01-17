@@ -2,9 +2,9 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ Ribbon.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCompilationCore.UI
+namespace SelectionMonitorCompilationCore.Shared.UI
 {
 
 	using System.Reflection;
@@ -41,7 +41,7 @@ namespace SelectionMonitorCompilationCore.UI
 
 		private static string AssemblyPath{get {return Assembly.GetExecutingAssembly().Location;}}
 
-		private static string ImagePath{get {return"SelectionMonitorCompilationCore.UI.Icons.";}}
+		private static string ImagePath{get {return"SelectionMonitorCompilationCore.Shared.UI.Icons.";}}
 
 		#endregion
 
@@ -74,11 +74,11 @@ namespace SelectionMonitorCompilationCore.UI
 			var buttonName  = "FairButtonItem";
 			var buttonTitle = "Fair Method";
 
-			return new PushButtonData(buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Commands.MonitorFairCommand")
+			return new PushButtonData(buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Tools.MonitorFairCommand")
 			       {
 				       LargeImage            = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
 				       Image                 = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_16.png"),
-				       AvailabilityClassName = "SelectionMonitorCompilationCore.Commands.Enablers.MonitorFairCommandEnabler"
+				       AvailabilityClassName = "SelectionMonitorCompilationCore.Tools.Enablers.MonitorFairCommandEnabler"
 			       };
 		}
 
@@ -88,7 +88,7 @@ namespace SelectionMonitorCompilationCore.UI
 			var buttonName  = "OnIdlingCommand";
 			var buttonTitle = "Start/Stop";
 
-			return new PushButtonData(ribbonAndPanelName + buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Commands.MonitorOnIdlingCommand")
+			return new PushButtonData(ribbonAndPanelName + buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Tools.MonitorOnIdlingCommand")
 			       {
 				       LargeImage = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
 				       Image      = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_16.png")
@@ -101,7 +101,7 @@ namespace SelectionMonitorCompilationCore.UI
 			var buttonName  = "OnPropertyChangedCommand";
 			var buttonTitle = "Start/Stop";
 
-			return new PushButtonData(ribbonAndPanelName + buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Commands.MonitorOnPropertyChangeCommand")
+			return new PushButtonData(ribbonAndPanelName + buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Tools.MonitorOnPropertyChangeCommand")
 			       {
 				       LargeImage = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
 				       Image      = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_16.png")

@@ -2,16 +2,16 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ MonitorFairCommand.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCompilationCore.Commands
+namespace SelectionMonitorCompilationCore.Tools
 {
 
 	using Autodesk.Revit.Attributes;
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using SelectionMonitorCompilationCore.Utilities;
+	using SelectionMonitorCompilationCore.Shared.Utilities;
 
 	[Transaction(TransactionMode.Manual)]
 	public class MonitorFairCommand : IExternalCommand

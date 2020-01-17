@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ App.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace SelectionMonitorCompilationCore
 {
@@ -14,8 +14,8 @@ namespace SelectionMonitorCompilationCore
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using SelectionMonitorCompilationCore.Events;
-	using SelectionMonitorCompilationCore.UI;
+	using SelectionMonitorCompilationCore.Shared.Events;
+	using SelectionMonitorCompilationCore.Shared.UI;
 
 	[Transaction(TransactionMode.Manual)]
 	internal class App : IExternalApplication

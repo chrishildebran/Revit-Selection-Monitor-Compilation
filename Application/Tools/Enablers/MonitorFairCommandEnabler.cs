@@ -2,9 +2,9 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ MonitorFairCommandEnabler.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCompilationCore.Commands.Enablers
+namespace SelectionMonitorCompilationCore.Tools.Enablers
 {
 
 	using System.Linq;
@@ -12,7 +12,7 @@ namespace SelectionMonitorCompilationCore.Commands.Enablers
 	using Autodesk.Revit.DB;
 	using Autodesk.Revit.UI;
 
-	using SelectionMonitorCompilationCore.Utilities;
+	using SelectionMonitorCompilationCore.Shared.Utilities;
 
 	public class MonitorFairCommandEnabler : IExternalCommandAvailability
 	{

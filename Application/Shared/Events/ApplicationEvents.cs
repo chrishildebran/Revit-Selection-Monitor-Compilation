@@ -2,16 +2,16 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ ApplicationEvents.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCompilationCore.Events
+namespace SelectionMonitorCompilationCore.Shared.Events
 {
 
 	using Autodesk.Revit.DB.Events;
 	using Autodesk.Windows;
 
-	using SelectionMonitorCompilationCore.UI;
-	using SelectionMonitorCompilationCore.Utilities;
+	using SelectionMonitorCompilationCore.Shared.UI;
+	using SelectionMonitorCompilationCore.Shared.Utilities;
 
 	internal static class ApplicationEvents
 	{

@@ -66,18 +66,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Commands\Enablers\MonitorFairCommandEnabler.cs" />
-    <Compile Include="Commands\MonitorFairCommand.cs" />
-    <Compile Include="Commands\MonitorOnIdlingCommand.cs" />
-    <Compile Include="Commands\MonitorOnPropertyChangeCommand.cs" />
-    <Compile Include="Events\ApplicationEvents.cs" />
-    <Compile Include="Events\EventFactory.cs" />
-    <Compile Include="Events\MonitorOnIdling.cs" />
-    <Compile Include="Events\DocumentEvents.cs" />
-    <Compile Include="UI\RibbonUtilities.cs" />
+    <Compile Include="Tools\Enablers\MonitorFairCommandEnabler.cs" />
+    <Compile Include="Tools\MonitorFairCommand.cs" />
+    <Compile Include="Tools\MonitorOnIdlingCommand.cs" />
+    <Compile Include="Tools\MonitorOnPropertyChangeCommand.cs" />
+    <Compile Include="Shared\Events\ApplicationEvents.cs" />
+    <Compile Include="Shared\Events\EventFactory.cs" />
+    <Compile Include="Shared\Events\MonitorOnIdling.cs" />
+    <Compile Include="Shared\Events\DocumentEvents.cs" />
+    <Compile Include="Shared\UI\RibbonUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Ribbon.cs" />
-    <Compile Include="Utilities\Messaging.cs" />
+    <Compile Include="Shared\UI\Ribbon.cs" />
+    <Compile Include="Shared\Utilities\Messaging.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SelectionMonitorCompilation.addin" />
@@ -86,9 +86,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UI\Icons\startstop_16.png" />
-    <EmbeddedResource Include="UI\Icons\startstop_32.png" />
+    <EmbeddedResource Include="Shared\UI\Icons\startstop_16.png" />
+    <EmbeddedResource Include="Shared\UI\Icons\startstop_32.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <PropertyGroup>
     <PostBuildEvent>if exist "C:\ProgramData\Autodesk\Revit\Addins\2020" copy "$(ProjectDir)*.addin" "C:\ProgramData\Autodesk\Revit\Addins\2020"

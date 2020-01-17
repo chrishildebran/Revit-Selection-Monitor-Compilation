@@ -2,9 +2,9 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ EventFactory.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCompilationCore.Events
+namespace SelectionMonitorCompilationCore.Shared.Events
 {
 
 	using System;

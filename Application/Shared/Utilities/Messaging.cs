@@ -2,9 +2,9 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ Messaging.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
-namespace SelectionMonitorCompilationCore.Utilities
+namespace SelectionMonitorCompilationCore.Shared.Utilities
 {
 
 	using System.Collections.Generic;
