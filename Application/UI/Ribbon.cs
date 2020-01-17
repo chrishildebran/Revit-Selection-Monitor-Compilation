@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ SelectionMonitor
+// Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ Ribbon.cs
-// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace SelectionMonitorCompilationCore.UI
 {
@@ -39,9 +39,9 @@ namespace SelectionMonitorCompilationCore.UI
 			private set;
 		}
 
-		private static string ImagePath{get {return"SelectionMonitorCore.UI.Images.";}}
+		private static string AssemblyPath{get {return Assembly.GetExecutingAssembly().Location;}}
 
-		private static string Path{get {return Assembly.GetExecutingAssembly().Location;}}
+		private static string ImagePath{get {return"SelectionMonitorCompilationCore.UI.Icons.";}}
 
 		#endregion
 
@@ -71,14 +71,14 @@ namespace SelectionMonitorCompilationCore.UI
 
 		private static PushButtonData FairFiftyNineCommand()
 		{
-			var buttonName      = "FairButtonItem";
-			var fairButtonTitle = "Fair Method";
+			var buttonName  = "FairButtonItem";
+			var buttonTitle = "Fair Method";
 
-			return new PushButtonData(buttonName, fairButtonTitle, Path, "SelectionMonitorCore.Commands.MonitorFairCommand")
+			return new PushButtonData(buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Commands.MonitorFairCommand")
 			       {
-				       //LargeImage            = Utilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
-				       //Image                 = Utilities.GetBitmapFrame(ImagePath + "startstop_16.png"),
-				       AvailabilityClassName = "SelectionMonitorCore.Commands.Enablers.MonitorFairCommandEnabler"
+				       LargeImage            = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
+				       Image                 = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_16.png"),
+				       AvailabilityClassName = "SelectionMonitorCompilationCore.Commands.Enablers.MonitorFairCommandEnabler"
 			       };
 		}
 
@@ -88,10 +88,10 @@ namespace SelectionMonitorCompilationCore.UI
 			var buttonName  = "OnIdlingCommand";
 			var buttonTitle = "Start/Stop";
 
-			return new PushButtonData(ribbonAndPanelName + buttonName, buttonTitle, Path, "SelectionMonitorCore.Commands.MonitorOnIdlingCommand")
+			return new PushButtonData(ribbonAndPanelName + buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Commands.MonitorOnIdlingCommand")
 			       {
-				       LargeImage = Utilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
-				       Image      = Utilities.GetBitmapFrame(ImagePath + "startstop_16.png")
+				       LargeImage = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
+				       Image      = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_16.png")
 			       };
 		}
 
@@ -101,10 +101,10 @@ namespace SelectionMonitorCompilationCore.UI
 			var buttonName  = "OnPropertyChangedCommand";
 			var buttonTitle = "Start/Stop";
 
-			return new PushButtonData(ribbonAndPanelName + buttonName, buttonTitle, Path, "SelectionMonitorCore.Commands.MonitorOnPropertyChangeCommand")
+			return new PushButtonData(ribbonAndPanelName + buttonName, buttonTitle, AssemblyPath, "SelectionMonitorCompilationCore.Commands.MonitorOnPropertyChangeCommand")
 			       {
-				       LargeImage = Utilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
-				       Image      = Utilities.GetBitmapFrame(ImagePath + "startstop_16.png")
+				       LargeImage = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_32.png"),
+				       Image      = RibbonUtilities.GetBitmapFrame(ImagePath + "startstop_16.png")
 			       };
 		}
 

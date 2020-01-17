@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ App.cs
-// Last Code Cleanup:... 01/16/2020 @ 8:47 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace SelectionMonitorCompilationCore
 {

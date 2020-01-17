@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ SelectionMonitor
+// Solution:............ SelectionMonitorCompilation
 // Project:............. Core
-// File:................ Utilities.cs
-// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
+// File:................ RibbonUtilities.cs
+// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace SelectionMonitorCompilationCore.UI
 {
@@ -12,7 +12,7 @@ namespace SelectionMonitorCompilationCore.UI
 
 	using Autodesk.Windows;
 
-	internal static class Utilities
+	internal static class RibbonUtilities
 	{
 
 		#region Methods (SC)

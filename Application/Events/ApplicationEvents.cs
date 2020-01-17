@@ -1,8 +1,8 @@
 ﻿// /////////////////////////////////////////////////////////////
-// Solution:............ SelectionMonitor
+// Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ ApplicationEvents.cs
-// Last Code Cleanup:... 01/14/2020 @ 7:37 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/17/2020 @ 8:02 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace SelectionMonitorCompilationCore.Events
 {
@@ -60,13 +60,13 @@ namespace SelectionMonitorCompilationCore.Events
 
 			if(fairPanel != null && fairButton != null)
 			{
-				var position = Utilities.GetPositionBeforeButton("ID_REVIT_FILE_PRINT");
+				var position = RibbonUtilities.GetPositionBeforeButton("ID_REVIT_FILE_PRINT");
 
-				Utilities.PlaceButtonOnQuickAccess(position, fairButton);
+				RibbonUtilities.PlaceButtonOnQuickAccess(position, fairButton);
 
-				Utilities.RemovePanelFromTab(fairTab, fairPanel);
+				RibbonUtilities.RemovePanelFromTab(fairTab, fairPanel);
 
-				Utilities.RemoveTabFromRibbon(fairTab);
+				RibbonUtilities.RemoveTabFromRibbon(fairTab);
 			}
 		}
 

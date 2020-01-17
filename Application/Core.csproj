@@ -74,7 +74,7 @@
     <Compile Include="Events\EventFactory.cs" />
     <Compile Include="Events\MonitorOnIdling.cs" />
     <Compile Include="Events\DocumentEvents.cs" />
-    <Compile Include="UI\Utilities.cs" />
+    <Compile Include="UI\RibbonUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Ribbon.cs" />
     <Compile Include="Utilities\Messaging.cs" />
@@ -86,8 +86,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UI\Images\startstop_16.png" />
-    <EmbeddedResource Include="UI\Images\startstop_32.png" />
+    <EmbeddedResource Include="UI\Icons\startstop_16.png" />
+    <EmbeddedResource Include="UI\Icons\startstop_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <PropertyGroup>
