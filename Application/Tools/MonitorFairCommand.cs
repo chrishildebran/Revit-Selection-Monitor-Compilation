@@ -2,7 +2,7 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ MonitorFairCommand.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/05/2021 @ 11:45 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace SelectionMonitorCompilationCore.Tools
 {
