@@ -2,13 +2,15 @@
 // Solution:............ SelectionMonitorCompilation
 // Project:............. Core
 // File:................ Messaging.cs
-// Last Code Cleanup:... 01/17/2020 @ 8:16 AM Using ReSharper ✓
+// Last Code Cleanup:... 01/05/2021 @ 11:52 AM Using ReSharper ✓
 // /////////////////////////////////////////////////////////////
 namespace SelectionMonitorCompilationCore.Shared.Utilities
 {
 
+	using System;
 	using System.Collections.Generic;
 	using System.Diagnostics;
+	using System.IO;
 	using System.Linq;
 	using System.Text;
 
@@ -18,6 +20,24 @@ namespace SelectionMonitorCompilationCore.Shared.Utilities
 	{
 
 		#region Methods (SC)
+
+		public static void AppendToFile(string filePath, StringBuilder stringBuilder)
+		{
+			try
+			{
+				using(var sw = File.AppendText(filePath))
+				{
+					sw.WriteLine(stringBuilder.ToString());
+				}
+			}
+			catch(Exception e)
+			{
+				//var emailer = new Emailer();
+
+				//emailer.SendToDeveloper(e, 2);
+			}
+		}
+
 
 		public static void DebugMessage(string message)
 		{
@@ -63,6 +83,10 @@ namespace SelectionMonitorCompilationCore.Shared.Utilities
 			sb.AppendLine("Elapsed Time: " + sw.Elapsed.TotalMilliseconds);
 
 			DebugMessage(sb.ToString());
+
+			var filePath = "C:\\Users\\CHildebran\\Downloads\\Logs\\Selection Monitor Events.log";
+
+			AppendToFile(filePath, sb);
 		}
 
 		#endregion
